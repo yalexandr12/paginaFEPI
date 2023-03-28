@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeelNews</title>
+    <link rel="stylesheet" href="../public/css/FeelNews.css">
+    <script src="https://kit.fontawesome.com/1403a81a44.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Exo&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    <script>
+        function mostrarFechaHora() {
+          var fechaHora = new Date();
+          var fecha = fechaHora.toLocaleDateString();
+          var hora = fechaHora.toLocaleTimeString();
+          document.getElementById("fecha-hora").innerHTML = fecha + " " + hora;
+        }
+        window.onload = function() {
+          mostrarFechaHora();
+        };
+      </script>
+</head>
+
+<body>
+  <!--Encabezado-->
+  <header>
+    <p id="fecha-hora" class="fecha"></p>
+    <hr>
+    <div class="row">
+      <div class="col-6 align-self-start">
+        <img class="logo" src="../public/images/Logo.jpg">
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <div class="dropdown">
+          <button class="btn btn-outline-dark w-100 h-100 rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><h5 class="dropdown-item" >Name</h5></li>
+            <li><a class="dropdown-item" href="#">Mi información</a></li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+    <hr>
+  </header>
+  <!--Barra de navegacion-->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-dark" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#sec1">Espectáculos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#sec2">Política</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#sec3">Economía</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#sec4">Deportes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <hr class="LineaGruesa">
+  <!--Encabezado de noticias-->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 p-2">
+        <div class="image-container">
+          <img class="img-encabezado" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/sYgHVmTvphoMB2ynh1K26eaIdbc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/CDMU5SED2ZCIRLOH4TN55ITYGI.jpg">
+          <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
+        </div>
+      </div>
+      <div class="col-xl-6 p-2">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="image-container my-1">
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/N3YU3I3KBdtQtflhy8mAdpHY9uU=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/TRGCO7LDURDY5KA5EGCUIE2WMY.jpg">
+              <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
+            </div>
+            <div class="image-container my-1">
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/c0YecPfg-RGpBOdCZ8Un6EuF5Kc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/WRJ2QQZDUFEDJFJJQCXKH735WM.jpeg">
+              <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="image-container my-1">
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/YnkLwDukFtuFgYEEZCzVLEI9-pc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/KHAIRN2TO5HSRIDXF6YSVQWXXY.jpeg">
+              <a href=""class="image-texto-1">Concamin inaugura Centro de Inteligencia</a>
+            </div>
+            <div class="image-container my-1">
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/mbE1oldSwjxW4fQQczlu2Pg25JY=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/GGLGJOEOJVD6FALRWVRWYYWIBM.jpeg">
+              <a href=""class="image-texto-1">Guerrero y Oaxaca suman esfuerzos en materia de seguridad y bienestar para sus pueblos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </div>
+  <!--Seccion de noticias por categoria-->
+  <div class="container-fluid ">
+    <div class="d-flex justify-content-center">
+      <div class="row flex-row ">
+        <div class="col-lg-9 order-md-1 order-1">
+          <!-- Aquí van las noticias -->
+          <div class="row">
+            <h3><em>Último momento</em></h3>
+            <hr>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://www.elfinanciero.com.mx/resizer/Uv1e6NIGmXptz-MrQoJ2XVUcsJU=/800x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/364WHYFRUNEAVLC3C3JXYWYTX4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Sequía en CDMX: ¿Cómo es el programa de Cosecha de lluvia y cuáles son sus requisitos? </h5>
+                    <p class="card-text">Con el programa de cosecha de lluvia, las personas de bajos recursos pueden acceder a un servicio de agua de calidad a bajo costo.</p>
+                    <a href="https://www.elfinanciero.com.mx/cdmx/2023/03/13/falta-de-agua-cdmx-programa-cosecha-de-lluvia-2023-que-es-y-requisitos/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/uecvtwT2d-rEF5AqY6cMng3daqg=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/RMQY3DII4VB6DF2IP4643QEGRA.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Si todo se puede atender en un correo ¿Cuál es el futuro de las juntas de trabajo?</h5>
+                    <p class="card-text">Ir de mala gana a juntas de trabajo no críticas desperdicia alrededor de 100 millones de dólares al año en grandes organizaciones</p>
+                    <a href="https://www.elfinanciero.com.mx/bloomberg/2023/03/13/juntas-de-trabajo-en-camino-de-desaparecer/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/wq2vgmOqEIo-fT31k3QPwiAeXro=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/FAVBZDFOINF25IWPSZTEI72KJA.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Sube a 10 el número de víctimas por ataque armado en centro nocturno de Guanajuato</h5>
+                    <p class="card-text">Este es el segundo ataque armado con múltiples víctimas en municipios de Guanajuato.</p>
+                    <a href="#" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section id="sec1">
+            <div class="row">
+              <h3><em>Espectáculos</em></h3>
+              <hr class="LineaGruesa">
+            </div>
+          </section>
+          <div class="d-flex justify-content-center">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/tv_zbdVzEdGYKk6Yb22IpEXMCVA=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/J26FSXNP5FBSDC6JPSVNLE72EE.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Melissa Galindo señala a Kalimba de acoso: "Creí que nunca iba hablar de este tema"</h5>
+                    <p class="card-text">Kalimba, integrante de OV7, fue acusado por la cantante Melissa Galindo de acoso sexual.</p>
+                    <a href="https://www.elfinanciero.com.mx/espectaculos/2023/03/16/melissa-galindo-explico-que-sufrio-acoso-de-kalimba-marichal-ex-ov7/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/bEqnjAa9PPNjLQDQ5Go39SJsBos=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EXAMCW532VFNDFFAWUVUMOXD4E.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">¿Quién es Peso Pluma, el cantante de "corridos belicones", y de dónde salió su apodo?</h5>
+                    <p class="card-text">Peso Pluma es un cantante de 23 años que hace corridos tumbados, también llamados por él 'corridos belicones'.</p>
+                    <a href="https://www.elfinanciero.com.mx/espectaculos/2023/03/16/perfil-quien-es-peso-pluma-el-cantante-de-corridos-belicones-y-de-donde-salio-su-apodo/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/UyZJShO7YjK2jo2S7pgdQxnMwcQ=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/5P6Z45AWTZFX3MKNOSOFJKIKGQ.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Tammy Parra: ¿Quién es la popular influencer y por qué se hizo famosa?</h5>
+                    <p class="card-text">La influencer es reconocida en redes como TikTok gracias a sus videos con experiencias y consejos.</p>
+                    <a href="https://www.elfinanciero.com.mx/espectaculos/2023/03/16/tammy-parra-quien-es-la-popular-influencer-y-por-que-se-hizo-famosa/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section id="sec2">
+            <div class="row">
+              <h3><em>Política</em></h3>
+              <hr class="LineaGruesa">
+            </div>
+          </section>
+          <div class="d-flex justify-content-center">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/SF37OAJi5aJlzkXWSRcqRFs50ls=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/STAWURXRDZASRKDPGXXDFDUWEU.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Diplomacia fallida</h5>
+                    <p class="card-text">No es con amenazas huecas e inoperantes como México podrá sostener una relación estable con Estados Unidos.</p>
+                    <a href="https://www.elfinanciero.com.mx/cdmx/2023/03/13/falta-de-agua-cdmx-programa-cosecha-de-lluvia-2023-que-es-y-requisitos/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/K46LdggmcPTkCQ1LGE502-U4ad0=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/TE7KKNYOP5GQHFD6AT4H5QK224.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Se carece de una política aeronáutica de Estado</h5>
+                    <p class="card-text">Lo urgente en el Congreso es reformar 36 artículos de las leyes de Aeropuertos y de Aviación Civil para recuperar la categoría 1 en seguridad aérea.</p>
+                    <a href="https://www.elfinanciero.com.mx/opinion/alejo-sanchez-cano/2023/03/16/se-carece-de-una-politica-aeronautica-de-estado/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/h1SF3H6En0eQQidiEp9jqypRQq8=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/F6B3YYEO4RBPDPUYCMX5GKYBNY.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">La soledad de los suspirantes de la oposición</h5>
+                    <p class="card-text">La oposición tiene a varios suspirantes en la banca, pero no se anima a definir una alineación para mandarlos a la cancha.</p>
+                    <a href="https://www.elfinanciero.com.mx/opinion/salvador-camarena/2023/03/16/la-soledad-de-los-suspirantes-de-la-oposicion/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section id="sec3">
+            <div class="row">
+              <h3><em>Economía</em></h3>
+              <hr class="LineaGruesa">
+            </div>
+          </section>
+          <div class="d-flex justify-content-center">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/d1DtbHJwBiaqSAz-BSEhRvXnfxk=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/5XEJUAWEJZHYXBPZZMVH47SQH4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Sacude el CV: SEP lanza vacantes de empleo con sueldos de hasta 147 mil pesos</h5>
+                    <p class="card-text">Entre los requisitos de estos empleos en la SEP están contar con licenciatura en Administración, Ciencias Políticas y Administración Públicas ... </p>
+                    <a href="https://www.elfinanciero.com.mx/cdmx/2023/03/16/sacude-el-cv-sep-lanza-vacantes-de-empleo-con-sueldos-de-hasta-147-mil-pesos/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/yf31X49siFOfgMCYRuXVmnIBAEk=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/B3A72527TFFTNGO7QSS5LUZL4U.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Convención Bancaria 2023 desde Mérida: sigue el minuto a minuto de la inauguración</h5>
+                    <p class="card-text">Más temprano, el presidente Andrés Manuel López Obrador destacó el buen momento de la banca en México, subrayando el monto de sus utilidades en 2022.</p>
+                    <a href="https://www.elfinanciero.com.mx/economia/2023/03/16/convencion-bancaria-2023-merida-sigue-minuto-a-minuto-en-vivo/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/9hwgTEMzG_rdmzu_VEVxRSTJgME=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/A5SFR7CZMNDQPBJR3ECUJ3OUGQ.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">¿Por qué cerraron Silicon Valley Bank, Signature y Silvergate y qué diferencia hay con México?</h5>
+                    <p class="card-text">AMLO dijo que no se esperan afectaciones a la banca mexicana tras el cierre de tres bancos en Estados Unidos, conoce por qué.</p>
+                    <a href="https://www.elfinanciero.com.mx/economia/2023/03/16/silicon-valley-bank-por-que-quebro-y-cual-es-el-riesgo-para-los-bancos-de-mexico/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section id="sec4">
+            <div class="row">
+              <h3><em>Deportes</em></h3>
+              <hr class="LineaGruesa">
+            </div>
+          </section>
+          <div class="d-flex justify-content-center">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/bi8jiV1BCJHx5EiQmyBZ_TEalZM=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/S37JJ3J3ZNEX7GCXCEGXET352A.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Clásico Mundial de Beisbol: ¿Cuál es el próximo rival de México en cuartos de final?</h5>
+                    <p class="card-text">México enfrentará en cuartos de final del Clásico Mundial de Beisbol a Puerto Rico el viernes 17 de marzo en Miami, Florida..</p>
+                    <a href="https://www.elfinanciero.com.mx/deportes/2023/03/15/clasico-mundial-beisbol-2023-fecha-horario-y-transmision-en-vivo-juego-de-mexico-en-cuartos-de-final/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/moiLZt2H9fwuCrkXjhO4USR3MEU=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/3PFK44PPNJDEHJ6VQ4PSDPY4B4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">¿El mejor delantero mexicano? Santiago Giménez marca golazo con Feyenoord en Europa League</h5>
+                    <p class="card-text">Feyenoord redondeó su clasificación para los cuartos de final de la Europa League después de cerrar una contundente goleada 7-1 contra el Shakhtar Donetsk.</p>
+                    <a href="https://www.elfinanciero.com.mx/deportes/2023/03/16/santiago-gimenez-marca-golazo-en-goleada-de-feyenoord-a-shakthar-en-europa-league/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/Xt12OxFsRjiT1bukVAZhwmZ7PiY=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/OM5PAKBY6BE6FPEPTBRF27XRSI.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">GP de Arabia Saudita: ¿Dónde y cuándo ver la carrera de "Checo" Pérez de la Fórmula 1 en vivo?</h5>
+                    <p class="card-text">El piloto mexicano ya subió al podio en el inicio de la temporada 2023 de la F1.</p>
+                    <a href="https://www.elfinanciero.com.mx/deportes/2023/03/16/gp-de-arabia-saudita-donde-y-cuando-ver-la-carrera-de-checo-perez-de-la-formula-1-en-vivo/" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 flex-column order-1">
+          <div class="container">
+            <div class="sticky-top">
+              <div class="row d-flex flex-row justify-content-center">
+                <!-- Aquí van los widgets -->
+                <iframe src="../public/Widgets/Calendar/index.html" class="calendar"></iframe>
+                
+                <div class="socialContainer">
+                  <h2>Síganos</h2>
+                  <p>¡Lee nuestras últimas noticias en cualquiera de estas redes sociales!</p>
+                  <div class="redes-sociales">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></i></a>
+                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<hr color="black">
+
+<footer class="text-center text-lg-start" id="sec4">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-lg-9 align-items-center">
+        <img src="../public/images/Logo.jpg" width="150" height="auto">
+        <p class="eslogan"> Lo que importa es lo que sientes.</p>
+      </div>
+      <div class="col-lg-3">
+        <p> © 2023  FeelNews, Inc. Privacy Policy</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

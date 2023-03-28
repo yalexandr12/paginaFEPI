@@ -1,0 +1,138 @@
+/*
+ * Box sizing fix
+ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/*
+ * Container
+ */
+body{
+  width: 260px;
+  height: auto;
+}
+
+/*
+ * Date Picker
+ */
+.date-picker {
+  position: relative;
+}
+.date-picker__calendar {
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 274px;
+  overflow: 0;
+  transition: opacity 0.2s ease-out, visibility 0.2s step-start 0.2s;
+  visibility: hidden;
+}
+.date-picker__calendar_visible {
+  opacity: 1;
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+/*
+ * Calendar
+ */
+.calendar {
+  padding: 10px;
+  width: 274px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.2;
+  text-align: center;
+  border: 3px solid #edeff2;
+  user-select: none;
+}
+.calendar__header {
+  position: relative;
+  padding: 10px 35px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  background-color: #1e2633;
+}
+.calendar__year {
+  color: #b3b3b3;
+}
+.calendar__btn {
+  position: absolute;
+  top: 8px;
+  display: block;
+  height: 20px;
+  padding: 0;
+  width: 20px;
+  text-indent: -9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+}
+.calendar__btn:before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  display: block;
+  height: 8px;
+  width: 8px;
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  transform-origin: center;
+}
+.calendar__btn_prev {
+  left: 10px;
+}
+.calendar__btn_prev:before {
+  left: 8px;
+  transform: rotate(-45deg);
+}
+.calendar__btn_next {
+  right: 10px;
+}
+.calendar__btn_next:before {
+  right: 8px;
+  transform: rotate(135deg);
+}
+.calendar__btn_disabled {
+  pointer-events: none;
+}
+.calendar__btn_disabled:before {
+  border-color: #b2b2b2;
+}
+.calendar__btn:hover:before {
+  border-color: #985e5b;
+}
+.calendar__table {
+  margin-top: 8px;
+  width: 100%;
+  table-layout: fixed;
+}
+.calendar__table-col-header {
+  padding: 12px 0;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.calendar__table-cell {
+  padding: 6px 0;
+  color: #1e2633;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.calendar__table-cell_disabled {
+  color: #d3dbe8;
+  pointer-events: none;
+}
+.calendar__table-cell_selected, .calendar__table-cell:hover {
+  color: #ffffff;
+  background-color: black;
+}

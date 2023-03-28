@@ -1,0 +1,32 @@
+.titulo{
+    font-family: 'Inria Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 72px;
+}
+
+.informacion{
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.contenido{
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 40px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.img-noticia {
+    max-width: 100%;
+    display: inline-block;
+    height: auto;
+    object-fit: cover;
+  }
