@@ -1,0 +1,86 @@
+body{
+    margin: 10px !important;
+    font-family: 'Exo', sans-serif;
+}
+.logo-user{
+    width: 90px;
+    height: auto;
+    margin: 10px auto;
+}
+.title{
+    font-family: 'Brawler';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 59px;
+    margin: 0 auto;
+}
+.card{
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid !important;
+}
+.input_group{
+    width: auto;
+    margin: 10px auto 25px;
+    position: relative;
+    --color: rgb(0, 0, 0);
+}
+.form_input{
+    width: 100%;
+    background: #f1f1f1;
+    color: gray;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+    font: inherit;
+}
+.form_label{
+    color:var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(50%);
+    transition: transform .5s, color .3s;
+}
+
+.form_input:not(:placeholder-shown){
+    color: rgb(13, 13, 67);
+}
+
+.form_input:not(:placeholder-shown) + .form_label{
+    transform: translateY(-100%) scale(.9);
+    transform-origin: left top;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    left: 0px;
+}
+
+.texto{
+    font-size: 12px;
+    margin: 0 0 20px;
+}
+
+.pass-eye{
+    position: absolute;
+    top: 5px;
+    right: 0;
+    z-index: 1;
+    border: none !important;
+}
+
+.form-check-input{
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+}
+
+.transition {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.transition.show {
+    opacity: 1;
+}

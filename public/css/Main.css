@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 50px 10px;
+    font-family: 'Exo', sans-serif;
+}
+
+.title{
+    width: auto;
+    height: 59px;
+    font-family: 'Brawler';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    margin-bottom: 100px;
+    text-align: center;
+    transform: translateY(50px);
+    transition: transform 1s ease;
+}
+
+.logo{
+    width: 350px;
+    height: auto;
+    margin: 50px auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mi-boton {
+    font-family: 'Exo';
+    font-style: normal;
+    border: 2px solid #000;
+    width: 200px;
+    padding: 10px 20px; 
+    color: #000;
+    background-color: #fff;
+    transition: 0.5s ease all;
+    position: relative;
+    overflow: hidden;
+  }
+  
+.mi-boton span{
+    position: relative;
+    z-index: 2;
+    transition: 0.3s ease all;
+}
+
+.mi-boton::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    position: absolute;
+    z-index: 1;
+    top:-80px;
+    left: 0;
+    transition: 0.3s ease-in-out all;
+}
+
+.mi-boton:hover::after{
+    top: 0;
+}
+
+.mi-boton:hover span {
+    color: #fff;
+}
+
+
+.botones{
+    opacity: 0;
+    transition: opacity 3s ease;
+}
+
+
+.show .logo {
+    opacity: 1;
+  }
+  
+.show .title {
+    transform: translateY(0);
+}
+
+.show .botones{
+    opacity: 1;
+}
