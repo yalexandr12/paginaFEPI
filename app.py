@@ -5,11 +5,15 @@ from usuarios import Usuarios
 
 db = dbase.dbConection()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
 
 @app.route('/')
 def home():
     return render_template('Main.html')
+
+
+
 
 #Metodo POST
 @app.route('/login', methods=['POST'])
@@ -25,7 +29,7 @@ def addUser():
 
     if user and name and last_name and username and pasword:
         newUser = Usuarios(name, last_name, username, email, pasword)
-        user.insert_one(newUser-__dict__)
+        user.insert_one(newUser.__dict__)
         response = jsonify({
             'name' : name,
             'last_name' : last_name,
