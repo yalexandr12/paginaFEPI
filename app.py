@@ -47,6 +47,14 @@ def notFound(error=None):
     }
     return jsonify(message)
 
+@app.route('/Inicio_sesion')
+def inicio_sesion():
+    return render_template('InicioSesion.html')
+
+@app.route('/Registro')
+def registro():
+    return render_template('Registro.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
