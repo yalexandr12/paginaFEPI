@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('Main.html')
 
 #Metodo POST
 @app.route('/login', methods=['POST'])
@@ -20,11 +20,12 @@ def addUser():
     last_name = request.form['apellidos']
     username = request.form['nombre_usuario']
     email = request.form['correo']
+
     pasword = request.form['contraseña']
 
     if user and name and last_name and username and pasword:
-        newUser = Usuarios[name, last_name, username, email, pasword]
-        user.insert_one(newUser.collectionUser())
+        newUser = Usuarios(name, last_name, username, email, pasword)
+        user.insert_one(newUser-__dict__)
         response = jsonify({
             'name' : name,
             'last_name' : last_name,
@@ -44,7 +45,7 @@ def notFound(error=None):
         'message' : 'No encontrado' + request.url,
         'status' : '404 Not Found'
     }
-    return Response
+    return jsonify(message)
 
 
 if __name__ == '__main__':
