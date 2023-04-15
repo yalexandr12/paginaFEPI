@@ -15,20 +15,22 @@ def home():
 @app.route('/login', methods=['POST'])
 def addUser():
     #Crear la colecion 
+    db = dbase.dbConection()
     user = db['usuarios']
     name = request.form['nombre']
-    last_name = request.form['apellidos']
+    last_nameP = request.form['apellidoP']
+    last_nameM = request.form['apellidoM']
     username = request.form['nombre_usuario']
     email = request.form['correo']
-
     pasword = request.form['contraseña']
 
-    if user and name and last_name and username and pasword:
-        newUser = Usuarios(name, last_name, username, email, pasword)
-        user.insert_one(newUser-__dict__)
+    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and username is not None and pasword is not None:
+        newUser = Usuarios(name, last_nameP, last_nameM, username, email, pasword)
+        user.insert_one(newUser.__dict__)
         response = jsonify({
             'name' : name,
-            'last_name' : last_name,
+            'last_nameP' : last_nameP,
+            'last_nameM' : last_nameM,
             'username' : username, 
             'email' : email,
             'pasword' : pasword
@@ -36,7 +38,6 @@ def addUser():
         return redirect(url_for('home'))
     else:
         return notFound()
-
 
 #Funcion para alertar que una pagina no se ha encontrado    
 @app.errorhandler(404)

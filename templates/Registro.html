@@ -19,36 +19,36 @@
         <h4 class="title">Registrate</h4>
         <div class="container">
             <p class="texto">Campos obligatorios*</p>
-            <form class="g-3 needs-validation" method="post">
+            <form class="g-3 needs-validation" method="post", action="/login">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input_group">
-                            <input type="text" id="nombre" class="form_input" placeholder=" " required>
+                            <input type="text" id="nombre" class="form_input" name = "nombre" placeholder=" " required>
                             <label for="nombre" class="form_label">Nombre(s)*</label>
                         </div>
                         <div class="input_group">
-                            <input type="text" id="apellidoPaterno" class="form_input" placeholder=" " required>
+                            <input type="text" id="apellidoPaterno" class="form_input" name = "apellidoP" placeholder=" " required>
                             <label for="apellidoPaterno" class="form_label">Apellido Paterno*</label>
                         </div>
                         <div class="input_group">
-                            <input type="text" id="apellidoMaterno" class="form_input" placeholder=" " required>
+                            <input type="text" id="apellidoMaterno" class="form_input" name = "apellidoM" placeholder=" " required>
                             <label for="apellidoMaterno" class="form_label">Apellido Materno*</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input_group">
-                            <input type="email" id="correo" class="form_input" placeholder=" " required>
+                            <input type="email" id="correo" class="form_input" name = "correo" placeholder=" " required>
                             <label for="correo" class="form_label">Correo electrónico*</label>
                         </div>
                         <div class="input_group">
-                            <input type="password" id="pass" class="form_input" placeholder=" " required>
+                            <input type="password" id="pass" class="form_input" name = "contraseña" placeholder=" " required>
                             <label for="pass" class="form_label">Contraseña*</label>
                             <button class="btn pass-eye" type="button" id="show-password-btn-1" onclick="togglePassword('1','pass')">
                                 <i class="fa-regular fa-eye-slash" id='myIcon-1'></i>
                             </button>
                         </div>
                         <div class="input_group">
-                            <input type="password" id="passConfir" class="form_input" placeholder=" " required>
+                            <input type="password" id="passConfir" class="form_input", name = "nombre_usuario" placeholder=" " required>
                             <label for="passConfir" class="form_label">Confirmar Contraseña*</label>
                             <button class="btn pass-eye" type="button" id="show-password-btn-2" onclick="togglePassword('2','passConfir')">
                                 <i class="fa-regular fa-eye-slash" id='myIcon-2'></i>
