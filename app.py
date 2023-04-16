@@ -20,18 +20,16 @@ def addUser():
     name = request.form['nombre']
     last_nameP = request.form['apellidoP']
     last_nameM = request.form['apellidoM']
-    username = request.form['nombre_usuario']
     email = request.form['correo']
     pasword = request.form['contraseña']
 
-    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and username is not None and pasword is not None:
-        newUser = Usuarios(name, last_nameP, last_nameM, username, email, pasword)
+    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and pasword is not None:
+        newUser = Usuarios(name, last_nameP, last_nameM, email, pasword)
         user.insert_one(newUser.__dict__)
         response = jsonify({
             'name' : name,
             'last_nameP' : last_nameP,
             'last_nameM' : last_nameM,
-            'username' : username, 
             'email' : email,
             'pasword' : pasword
         })
