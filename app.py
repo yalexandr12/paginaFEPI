@@ -5,11 +5,15 @@ from usuarios import Usuarios
 
 db = dbase.dbConection()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
 
 @app.route('/')
 def home():
     return render_template('Main.html')
+
+
+
 
 #Metodo POST
 @app.route('/login', methods=['POST'])
