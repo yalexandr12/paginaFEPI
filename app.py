@@ -70,6 +70,11 @@ def entrar():
 
 
 
+@app.route('/FeelNews')
+def inicionoticias():
+    return render_template('FeelNews.html')
+
+
 
 
 if __name__ == '__main__':
