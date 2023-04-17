@@ -59,8 +59,13 @@ def registro():
     return render_template('Registro.html')
 
 @app.route('/Noticia')
-def entrar():
+def contenido():
     return render_template('Noticia.html')
+
+
+@app.route('/FeelNews')
+def inicionoticias():
+    return render_template('FeelNews.html')
 
 
 
