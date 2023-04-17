@@ -58,6 +58,12 @@ def inicio_sesion():
 def registro():
     return render_template('Registro.html')
 
+@app.route('/Noticia')
+def entrar():
+    return render_template('Noticia.html')
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
