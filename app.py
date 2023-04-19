@@ -10,9 +10,7 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def home():
-    return render_template('Main.html')
-
-
+    return render_template('InicioSesion.html')  #
 
 
 #Metodo POST
@@ -25,17 +23,23 @@ def addUser():
     last_nameP = request.form['apellidoP']
     last_nameM = request.form['apellidoM']
     email = request.form['correo']
-    pasword = request.form['contraseña']
+    password = request.form['contraseña']
 
-    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and pasword is not None:
-        newUser = Usuarios(name, last_nameP, last_nameM, email, pasword)
+    # Verificar si el correo electrónico ya está en la base de datos
+    existing_user = user.find_one({'email': email})
+    if existing_user is not None:
+        return 'El correo electrónico ya está registrado en la base de datos'
+
+
+    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
+        newUser = Usuarios(name, last_nameP, last_nameM, email, password)
         user.insert_one(newUser.__dict__)
         response = jsonify({
             'name' : name,
             'last_nameP' : last_nameP,
             'last_nameM' : last_nameM,
             'email' : email,
-            'pasword' : pasword
+            'password' : password
         })
         return redirect(url_for('home'))
     else:
@@ -45,13 +49,14 @@ def addUser():
 @app.errorhandler(404)
 def notFound(error=None):
     message ={
-        'message' : 'No encontrado' + request.url,
+        'message' : 'No encontrado ' + request.url,
         'status' : '404 Not Found'
     }
     return jsonify(message)
 
+
 @app.route('/Inicio_sesion')
-def inicio_sesion():
+def inicio():
     return render_template('InicioSesion.html')
 
 @app.route('/Registro')
@@ -59,15 +64,23 @@ def registro():
     return render_template('Registro.html')
 
 @app.route('/Noticia')
-def contenido():
-    return render_template('Noticia.html')
-
-
-@app.route('/FeelNews')
-def inicionoticias():
+def entrar():
     return render_template('FeelNews.html')
 
 
+#Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
+@app.route('/Iniciar_sesion', methods=['GET'])
+def validate_user():
+    #Se mandan a llamar los parametros a validar, en la collecion usuarios
+    email = request.args.get('email')
+    password = request.args.get('password')
+    user = db['usuarios']
+    #Verificar que el usuario y la contraseñan correspondan al usuario
+    user_data = user.find_one({"email": email, "password": password})
+    if user_data is None:
+        return "El usuario o contraseña son incorrectos."
+    else:
+        return render_template('Noticia.html')
 
 
 if __name__ == '__main__':

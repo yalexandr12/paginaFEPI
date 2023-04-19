@@ -21,13 +21,13 @@
             <img src="{{ url_for('static', filename='images/User.svg')}}" class="logo-user">
             <h4 class="title">Iniciar Sesión</h1>
             <p class="texto">Campos obligatorios*</p>
-            <form  style="padding: 0 20px; margin-bottom: 10px;" autocomplete="off", action = "/FeelNews">
+            <form  style="padding: 0 20px; margin-bottom: 10px;" autocomplete="off", action = "/Iniciar_sesion" method="GET">
                 <div class="input_group">
-                    <input type="email" id="correo" class="form_input" placeholder=" " required>
+                    <input type="email" id="correo" class="form_input" name = "email" placeholder=" " required>
                     <label for="correo" class="form_label">Correo electrónico*</label>
                 </div>
                 <div class="input_group">
-                    <input type="password" id="pass" class="form_input" placeholder=" " required>
+                    <input type="password" id="pass" class="form_input" name = "password" placeholder=" " required>
                     <label for="pass" class="form_label">Contraseña*</label>
                 </div>
                 <div class="d-flex justify-content-start">
