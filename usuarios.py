@@ -1,11 +1,11 @@
 class Usuarios:
-    def __init__(self, name, last_nameP, last_nameM, email, pasword):
+    def __init__(self, name, last_nameP, last_nameM, email, password):
 
         self.name = name
         self.last_nameP = last_nameP
         self.last_nameM = last_nameM
         self.email = email
-        self.pasword = pasword
+        self.password = password
 
     def collectionUser(self):
         return{
@@ -13,5 +13,5 @@ class Usuarios:
             'apellidoP': self.last_nameP,
             'apellidoM': self.last_nameM,
             'correo': self.email,
-            'contraseña': self.pasword
+            'contraseña': self.password 
         }

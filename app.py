@@ -13,8 +13,6 @@ def home():
     return render_template('Main.html')
 
 
-
-
 #Metodo POST
 @app.route('/login', methods=['POST'])
 def addUser():
@@ -25,7 +23,7 @@ def addUser():
     last_nameP = request.form['apellidoP']
     last_nameM = request.form['apellidoM']
     email = request.form['correo']
-    pasword = request.form['contraseña']
+    password = request.form['contraseña']
 
     # Verificar si el correo electrónico ya está en la base de datos
     existing_user = user.find_one({'email': email})
@@ -33,15 +31,15 @@ def addUser():
         return 'El correo electrónico ya está registrado en la base de datos'
 
 
-    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and pasword is not None:
-        newUser = Usuarios(name, last_nameP, last_nameM, email, pasword)
+    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
+        newUser = Usuarios(name, last_nameP, last_nameM, email, password)
         user.insert_one(newUser.__dict__)
         response = jsonify({
             'name' : name,
             'last_nameP' : last_nameP,
             'last_nameM' : last_nameM,
             'email' : email,
-            'pasword' : pasword
+            'password' : password
         })
         return redirect(url_for('home'))
     else:
@@ -51,13 +49,14 @@ def addUser():
 @app.errorhandler(404)
 def notFound(error=None):
     message ={
-        'message' : 'No encontrado' + request.url,
+        'message' : 'No encontrado ' + request.url,
         'status' : '404 Not Found'
     }
     return jsonify(message)
 
+
 @app.route('/Inicio_sesion')
-def inicio_sesion():
+def inicio():
     return render_template('InicioSesion.html')
 
 @app.route('/Registro')
@@ -69,12 +68,16 @@ def entrar():
     return render_template('FeelNews.html')
 
 
-
-@app.route('/FeelNews')
-def inicionoticias():
-    return render_template('FeelNews.html')
-
-
+@app.route('/FeelNews', methods=['GET'])
+def validate_user():
+    email = request.args.get('email')
+    password = request.args.get('password')
+    user = db['usuarios']
+    user_data = user.find_one({"email": email, "password": password})
+    if user_data is None:
+        return "El usuario o contraseña son incorrectos."
+    else:
+        return render_template('Noticia.html')
 
 
 if __name__ == '__main__':
