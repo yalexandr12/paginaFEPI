@@ -12,7 +12,7 @@
         
       }
       .container{
-        width: 400px;
+        width: 80px;
         height: 10px;
         position: fixed;
       }
@@ -25,6 +25,7 @@
       .reactions-container {
         display: none;
         justify-content: center;
+        flex-direction: column;
       }
       .reaction {
         width: 50px;
@@ -60,14 +61,13 @@
       .selected {
         background-color: lightblue;
       }
-      .love.selected {
-        background-color: pink;
-        border: 1px solid pink;
+      .miedo.selected {
+        background-color: #7c00d4;
+        border: 1px solid #7c00d4;
       }
-      .love:hover{
-        background-color: pink;
-        border: 1px solid black;
-        
+      .miedo:hover{
+        background-color: #7c00d4;
+        border: 1px solid black; 
       }
       .haha.selected {
         background-color: yellow;
@@ -78,11 +78,11 @@
         border: 1px solid black;
       }
       .wow.selected {
-        background-color: lightgreen;
-        border: 1px solid lightgreen;
+        background-color: rgb(255, 180, 74);
+        border: 1px solid rgb(255, 180, 74);
       }
       .wow:hover {
-        background-color: lightgreen;
+        background-color: rgb(255, 180, 74);
         border: 1px solid black;
       }
       .sad.selected {
@@ -101,7 +101,31 @@
         background-color: red;
         border: 1px solid black;
       }
+      .neutro.selected {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(255, 255, 255);
+      }
+      .neutro:hover {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid black;
+      }
 
+      .conmovido.selected {
+        background-color: rgb(180, 180, 180);
+        border: 1px solid rgb(180, 180, 180);
+      }
+      .conmovido:hover {
+        background-color: rgb(180, 180, 180);
+        border: 1px solid black;
+      }
+      .inspiracion.selected {
+        background-color: lightgreen;
+        border: 1px solid lightgreen;
+      }
+      .inspiracion:hover {
+        background-color: lightgreen;
+        border: 1px solid black;
+      }
       .contenedor-botones{
         border-radius: 60px;
         border-color: rgb(108, 108, 108) !important;
@@ -117,25 +141,37 @@
   <body>
   <div class="container">
     <div class="reactions-container">
-      <div class="reaction love" data-reaction="Love">
-        <span class="reaction-name">Love</span>
-        <i class="fa-regular fa-face-grin-hearts"></i>
+      <div class="reaction haha" data-reaction="Felicidad">
+        <span class="reaction-name">Felicidad</span>
+        <i class="fa-regular fa-face-laugh-beam"></i>
       </div>
-      <div class="reaction haha" data-reaction="Haha">
-        <span class="reaction-name">Haha</span>
-        <i class="fa-regular fa-face-grin-tears"></i>
+      <div class="reaction miedo" data-reaction="Miedo">
+        <span class="reaction-name">Miedo</span>
+        <i class="fa-regular fa-face-flushed"></i>
       </div>
-      <div class="reaction wow" data-reaction="Wow">
-        <span class="reaction-name">Wow</span>
+      <div class="reaction wow" data-reaction="Sorpresa">
+        <span class="reaction-name">Sorpresa</span>
         <i class="fa-regular fa-face-surprise"></i>
       </div>
-      <div class="reaction sad" data-reaction="Sad">
-        <span class="reaction-name">Sad</span>
+      <div class="reaction sad" data-reaction="Tristeza">
+        <span class="reaction-name">Tristeza</span>
         <i class="fa-regular fa-face-sad-tear"></i>
       </div>
-      <div class="reaction angry" data-reaction="Angry">
-        <span class="reaction-name">Angry</span>
+      <div class="reaction angry" data-reaction="Enojo">
+        <span class="reaction-name">Enojo</span>
         <i class="fa-regular fa-face-angry"></i>
+      </div>
+      <div class="reaction neutro" data-reaction="Neutro">
+        <span class="reaction-name">Neutro</span>
+        <i class="fa-regular fa-face-meh"></i>
+      </div>
+      <div class="reaction conmovido" data-reaction="Conmovido">
+        <span class="reaction-name">Conmovido</span>
+        <i class="fa-regular fa-face-sad-cry"></i>
+      </div>
+      <div class="reaction inspiracion" data-reaction="Inspiracion">
+        <span class="reaction-name">Inspiracion</span>
+        <i class="fa-regular fa-face-grin-stars"></i>
       </div>
     </div>
     <center>
@@ -170,7 +206,7 @@
       reactionButtons.forEach(button => {
         button.addEventListener('click', () => {
           const selectedReaction = button.getAttribute('data-reaction');
-          console.log(selectedReaction); // or store the selected emotion in a variable or send it to a server
+          console.log(selectedReaction);
         });
       });
 

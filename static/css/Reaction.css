@@ -1,0 +1,130 @@
+body{
+    font-family: 'Arial';
+    margin-top: 20px;
+}
+.containerWidget{
+    width: 80px;
+    height: 10px;
+    position: fixed;
+    z-index: 5;
+}
+.boton{
+    position: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.reactions-container {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+.reaction {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+}
+.reaction:hover {
+    transform: scale(1.2);
+}
+.reaction-name {
+    display: none;
+    position: absolute;
+    top: -20px;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.reaction:hover .reaction-name {
+    display: block;
+}
+.selected {
+    background-color: lightblue;
+}
+.miedo.selected {
+    background-color: #7c00d4;
+    border: 1px solid #7c00d4;
+}
+.miedo:hover{
+    background-color: #7c00d4;
+    border: 1px solid black; 
+}
+.haha.selected {
+    background-color: yellow;
+    border: 1px solid yellow;
+}
+.haha:hover {
+    background-color: yellow;
+    border: 1px solid black;
+}
+.wow.selected {
+    background-color: rgb(255, 180, 74);
+    border: 1px solid rgb(255, 180, 74);
+}
+.wow:hover {
+    background-color: rgb(255, 180, 74);
+    border: 1px solid black;
+}
+.sad.selected {
+    background-color: lightblue;
+    border: 1px solid lightblue;
+}
+.sad:hover {
+    background-color: lightblue;
+    border: 1px solid black;
+}
+.angry.selected {
+    background-color: red;
+    border: 1px solid red;
+}
+.angry:hover {
+    background-color: red;
+    border: 1px solid black;
+}
+.neutro.selected {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+}
+.neutro:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.conmovido.selected {
+    background-color: rgb(180, 180, 180);
+    border: 1px solid rgb(180, 180, 180);
+}
+.conmovido:hover {
+    background-color: rgb(180, 180, 180);
+    border: 1px solid black;
+}
+.inspiracion.selected {
+    background-color: lightgreen;
+    border: 1px solid lightgreen;
+}
+.inspiracion:hover {
+    background-color: lightgreen;
+    border: 1px solid black;
+}
+.contenedor-botones{
+    border-radius: 60px;
+    border-color: rgb(108, 108, 108) !important;
+    border: 2px solid;
+    height: 65px; 
+    width: 75px; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color:transparent;
+}
