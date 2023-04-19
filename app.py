@@ -10,7 +10,7 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def home():
-    return render_template('Main.html')
+    return render_template('InicioSesion.html')  #
 
 
 #Metodo POST
@@ -68,11 +68,14 @@ def entrar():
     return render_template('FeelNews.html')
 
 
-@app.route('/FeelNews', methods=['GET'])
+#Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
+@app.route('/Iniciar_sesion', methods=['GET'])
 def validate_user():
+    #Se mandan a llamar los parametros a validar, en la collecion usuarios
     email = request.args.get('email')
     password = request.args.get('password')
     user = db['usuarios']
+    #Verificar que el usuario y la contraseñan correspondan al usuario
     user_data = user.find_one({"email": email, "password": password})
     if user_data is None:
         return "El usuario o contraseña son incorrectos."
