@@ -65,7 +65,7 @@ def registro():
 
 @app.route('/Noticia')
 def entrar():
-    return render_template('FeelNews.html')
+    return render_template('Noticia.html')
 
 
 #Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
@@ -80,7 +80,7 @@ def validate_user():
     if user_data is None:
         return "El usuario o contraseña son incorrectos."
     else:
-        return render_template('Noticia.html')
+        return render_template('FeelNews.html')
 
 
 if __name__ == '__main__':
@@ -88,3 +88,6 @@ if __name__ == '__main__':
 
 
 
+@app.route('/Calendario')
+def registro():
+    return render_template('Calendario.html')

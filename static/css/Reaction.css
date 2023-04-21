@@ -1,29 +1,33 @@
-body{
-    font-family: 'Arial';
-    margin-top: 20px;
-}
-.containerWidget{
-    width: 80px;
-    height: 10px;
+.ContenedorWidget{
+    width: 100%;
+    max-width: 700px;
+    height: 80px;
     position: fixed;
-    z-index: 5;
+    bottom: 10vh;
+    right: 5vh;
+    z-index: 999;
+    display: flex;
+    flex-direction: row-reverse;
 }
 .boton{
     position: flex;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50% !important;
+    color: black !important;
 }
 .reactions-container {
-    display: none;
-    justify-content: center;
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .reaction {
     width: 50px;
     height: 50px;
     border-radius: 25px;
     border: 1px solid lightgray;
+    background-color: white;
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -54,68 +58,68 @@ body{
     background-color: lightblue;
 }
 .miedo.selected {
-    background-color: #7c00d4;
-    border: 1px solid #7c00d4;
+    background-color: #B39DDB;
+    border: 1px solid #B39DDB;
 }
 .miedo:hover{
-    background-color: #7c00d4;
+    background-color: #B39DDB;
     border: 1px solid black; 
 }
-.haha.selected {
-    background-color: yellow;
-    border: 1px solid yellow;
+.felicidad.selected {
+    background-color:  #FFEE58;
+    border: 1px solid  #FFEE58;
 }
-.haha:hover {
-    background-color: yellow;
+.felicidad:hover {
+    background-color: #FFEE58;
     border: 1px solid black;
 }
-.wow.selected {
-    background-color: rgb(255, 180, 74);
-    border: 1px solid rgb(255, 180, 74);
+.sorpresa.selected {
+    background-color: #F5DEB3;
+    border: 1px solid #F5DEB3;
 }
-.wow:hover {
-    background-color: rgb(255, 180, 74);
+.sorpresa:hover {
+    background-color: #F5DEB3;
     border: 1px solid black;
 }
-.sad.selected {
-    background-color: lightblue;
-    border: 1px solid lightblue;
+.tristeza.selected {
+    background-color: #BFE6FF;
+    border: 1px solid #BFE6FF;
 }
-.sad:hover {
-    background-color: lightblue;
+.tristeza:hover {
+    background-color: #BFE6FF;
     border: 1px solid black;
 }
-.angry.selected {
-    background-color: red;
-    border: 1px solid red;
+.enojo.selected {
+    background-color: #ff6171;
+    border: 1px solid #ff6171;
 }
-.angry:hover {
-    background-color: red;
+.enojo:hover {
+    background-color: #ff6171;
     border: 1px solid black;
 }
 .neutro.selected {
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(255, 255, 255);
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
 }
 .neutro:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: #f1f1f1;
     border: 1px solid black;
 }
 
 .conmovido.selected {
-    background-color: rgb(180, 180, 180);
-    border: 1px solid rgb(180, 180, 180);
+    background-color: #ffc061;
+    border: 1px solid #ffc061;
 }
 .conmovido:hover {
-    background-color: rgb(180, 180, 180);
+    background-color: #ffc061;
     border: 1px solid black;
 }
 .inspiracion.selected {
-    background-color: lightgreen;
-    border: 1px solid lightgreen;
+    background-color: #BEE7A3;
+    border: 1px solid #BEE7A3;
 }
 .inspiracion:hover {
-    background-color: lightgreen;
+    background-color: #BEE7A3;
     border: 1px solid black;
 }
 .contenedor-botones{
@@ -126,5 +130,59 @@ body{
     width: 75px; 
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color:transparent;
+    background-color: white;
+}
+
+.collapsible-container {
+    display: flex;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.collapsible {
+    flex-shrink: 0;
+}
+
+.contenidoWidget{
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.contenido-abierto {
+    width: 100%;
+}
+
+@media (max-width: 770px) {
+    .reaction {
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        margin: 5px;
+        font-size: 10px;
+    }
+    .ContenedorWidget{
+        width: 100%;
+        max-width: 400px;
+        padding-top: 10px;
+    }
+    .contenedor-botones{
+        padding: auto;
+        border: 2px solid;
+        height: 45px; 
+        width: 45px; 
+    }
+    .boton{
+        border-radius: 20px;
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+        padding: 0 !important;
+    }
+    .reaction-name {
+        font-size: 8px;
+    }
+    .reactions-container {
+        padding-top: 15px;
+    }
 }

@@ -140,6 +140,13 @@
   </head>
   <body>
   <div class="container">
+    <center>
+      <div class="contenedor-botones">
+        <button id="toggle-reactions" type="button" class="btn btn-outline-secondary boton">
+          <i class="fa-regular fa-face-meh-blank"></i>
+        </button>
+      </div>
+    </center>
     <div class="reactions-container">
       <div class="reaction haha" data-reaction="Felicidad">
         <span class="reaction-name">Felicidad</span>
@@ -174,13 +181,7 @@
         <i class="fa-regular fa-face-grin-stars"></i>
       </div>
     </div>
-    <center>
-      <div class="contenedor-botones">
-        <button id="toggle-reactions" type="button" class="btn btn-outline-secondary boton">
-          <i class="fa-regular fa-face-meh-blank"></i>
-        </button>
-      </div>
-    </center>
+    
   </div>
     <script>
       const toggleReactions = document.querySelector("#toggle-reactions");
@@ -206,7 +207,7 @@
       reactionButtons.forEach(button => {
         button.addEventListener('click', () => {
           const selectedReaction = button.getAttribute('data-reaction');
-          console.log(selectedReaction);
+          console.log(selectedReaction); // or store the selected emotion in a variable or send it to a server
         });
       });
 

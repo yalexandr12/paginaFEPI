@@ -1,26 +1,27 @@
-const toggleReactions = document.querySelector("#toggle-reactions");
-      const reactionsContainer = document.querySelector(".reactions-container");
-      toggleReactions.addEventListener("click", function() {
-        reactionsContainer.style.display = reactionsContainer.style.display === "flex" ? "none" : "flex";
-      });
+const collapsible = document.querySelector('.boton');
+const contenido = document.querySelector('.contenidoWidget');
+const botonReacciones = document.getElementById('toggle-reactions');
+const reacciones = document.querySelectorAll(".reaction");
 
-const reactions = document.querySelectorAll(".reaction");
-reactions.forEach(r => {
+collapsible.addEventListener('click', () => {
+    contenido.classList.toggle('contenido-abierto');
+});
+
+reacciones.forEach(r => {
     r.addEventListener("click", function() {
-        reactions.forEach(r => {
+    reacciones.forEach(r => {
         r.classList.remove("selected");
-        });
-        this.classList.add("selected");
-        reactionsContainer.style.display = "none";
+    });
+    this.classList.add("selected");
+    botonReacciones.innerHTML = this.innerHTML;
+    botonReacciones.style.backgroundColor = getComputedStyle(this).getPropertyValue('background-color');
+    contenido.classList.toggle('contenido-abierto');
     });
 });
-// Get all reaction buttons
-const reactionButtons = document.querySelectorAll('.reaction');
 
-// Add event listener to each reaction button
-reactionButtons.forEach(button => {
+reacciones.forEach(button => {
     button.addEventListener('click', () => {
-        const selectedReaction = button.getAttribute('data-reaction');
-        console.log(selectedReaction);
+      const selectedReaction = button.getAttribute('data-reaction');
+      console.log(selectedReaction);
     });
 });
