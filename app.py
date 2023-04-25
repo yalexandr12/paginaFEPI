@@ -1,12 +1,15 @@
 from flask import Flask
 from flask import render_template, request, Response, jsonify, redirect, url_for
+from flask import request
+import os
+from forms import RegistroForm
 import database as dbase 
 from usuarios import Usuarios 
 
 db = dbase.dbConection()
 
 app = Flask(__name__, static_url_path='/static')
-
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 @app.route('/')
 def home():
@@ -14,36 +17,56 @@ def home():
 
 
 #Metodo POST
-@app.route('/login', methods=['POST'])
+@app.route('/registrosesion', methods=['GET','POST'])
 def addUser():
     #Crear la colecion 
     db = dbase.dbConection()
     user = db['usuarios']
-    name = request.form['nombre']
-    last_nameP = request.form['apellidoP']
-    last_nameM = request.form['apellidoM']
-    email = request.form['correo']
-    password = request.form['contraseña']
 
-    # Verificar si el correo electrónico ya está en la base de datos
-    existing_user = user.find_one({'email': email})
-    if existing_user is not None:
-        return 'El correo electrónico ya está registrado en la base de datos'
+    form = RegistroForm()
+    if request.method == 'POST' and form.validate_on_submit() and 'submit' in request.form:
+        form.nombre.data = request.form['nombre']
+        form.apellidoP.data = request.form['apellidoP']
+        form.apellidoM.data = request.form['apellidoM']
+        form.correo.data = request.form['correo']
+        form.contraseña.data = request.form['contraseña']
+        #confirmar contraseña->>>>>>>
+        form.confirmar_contraseña.data = request.form['confirmar_contraseña']
+
+        if form.contraseña.data != form.confirmar_contraseña.data:
+            flash('Las contraseñas no coinciden', 'error')
+            return redirect(url_for('addUser'))
+
+         # Verificar si el correo electrónico ya está en la base de datos
+        existing_user = user.find_one({'email': email})
+        if existing_user is not None:
+         return 'El correo electrónico ya está registrado en la base de datos'
+        form.confirmar_contraseña.data = request.form['confirmarcontraseña']
+        #form.submit.data=request.form['submit_button']
+        # El formulario es válido
+        # Procesar los datos del formulario aquí
+        
+        if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
+            newUser = Usuarios(name, last_nameP, last_nameM, email, password)
+            user.insert_one(newUser.__dict__)
+            response = jsonify({
+                'name' : name,
+                'last_nameP' : last_nameP,
+                'last_nameM' : last_nameM,
+                'email' : email,
+                'password' : password
+            })
+            return redirect(url_for('inicio'))
+        else:
+                return notFound()
+        
+    return render_template('Registro.html', form=form)
 
 
-    if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
-        newUser = Usuarios(name, last_nameP, last_nameM, email, password)
-        user.insert_one(newUser.__dict__)
-        response = jsonify({
-            'name' : name,
-            'last_nameP' : last_nameP,
-            'last_nameM' : last_nameM,
-            'email' : email,
-            'password' : password
-        })
-        return redirect(url_for('home'))
-    else:
-        return notFound()
+
+
+
+
 
 #Funcion para alertar que una pagina no se ha encontrado    
 @app.errorhandler(404)
@@ -59,9 +82,7 @@ def notFound(error=None):
 def inicio():
     return render_template('InicioSesion.html')
 
-@app.route('/Registro')
-def registro():
-    return render_template('Registro.html')
+
 
 @app.route('/Noticia')
 def entrar():
@@ -81,7 +102,14 @@ def validate_user():
         return "El usuario o contraseña son incorrectos."
     else:
         return render_template('Noticia.html')
+    
+#Funcion para inicio y validaciones de las inputs
 
+
+
+@app.route('/registro-exitoso')
+def registro_exitoso():
+    return '¡Registro exitoso!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
