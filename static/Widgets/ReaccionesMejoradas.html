@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/1403a81a44.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit.fontawesome.com/1403a81a44.css" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<style>
+    .ContenedorWidget{
+        width: 100%;
+        max-width: 700px;
+        height: 80px;
+        position: fixed;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      .boton{
+        position: flex;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        color: black;
+      }
+      .reactions-container {
+        display: flex;
+        justify-content: space-between;
+        
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .reaction {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border: 1px solid lightgray;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        transition: all 0.2s ease-in-out;
+      }
+      .reaction:hover {
+        transform: scale(1.2);
+      }
+      .reaction-name {
+        display: none;
+        position: absolute;
+        top: -20px;
+        background-color: transparent;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+      }
+      .reaction:hover .reaction-name {
+        display: block;
+      }
+      .selected {
+        background-color: lightblue;
+      }
+      .miedo.selected {
+        background-color: #B39DDB;
+        border: 1px solid #B39DDB;
+      }
+      .miedo:hover{
+        background-color: #B39DDB;
+        border: 1px solid black; 
+      }
+      .felicidad.selected {
+        background-color:  #FFEE58;
+        border: 1px solid  #FFEE58;
+      }
+      .felicidad:hover {
+        background-color: #FFEE58;
+        border: 1px solid black;
+      }
+      .sorpresa.selected {
+        background-color: #F5DEB3;
+        border: 1px solid #F5DEB3;
+      }
+      .sorpresa:hover {
+        background-color: #F5DEB3;
+        border: 1px solid black;
+      }
+      .tristeza.selected {
+        background-color: #BFE6FF;
+        border: 1px solid #BFE6FF;
+      }
+      .tristeza:hover {
+        background-color: #BFE6FF;
+        border: 1px solid black;
+      }
+      .enojo.selected {
+        background-color: #ff6171;
+        border: 1px solid #ff6171;
+      }
+      .enojo:hover {
+        background-color: #ff6171;
+        border: 1px solid black;
+      }
+      .neutro.selected {
+        background-color: #f1f1f1;
+        border: 1px solid #f1f1f1;
+      }
+      .neutro:hover {
+        background-color: #f1f1f1;
+        border: 1px solid black;
+      }
+
+      .conmovido.selected {
+        background-color: #ffc061;
+        border: 1px solid #ffc061;
+      }
+      .conmovido:hover {
+        background-color: #ffc061;
+        border: 1px solid black;
+      }
+      .inspiracion.selected {
+        background-color: #BEE7A3;
+        border: 1px solid #BEE7A3;
+      }
+      .inspiracion:hover {
+        background-color: #BEE7A3;
+        border: 1px solid black;
+      }
+      .contenedor-botones{
+        border-radius: 60px;
+        border-color: rgb(108, 108, 108) !important;
+        border: 2px solid;
+        height: 65px; 
+        width: 75px; 
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color:transparent;
+      }
+
+      .collapsible-container {
+        display: flex;
+        max-width: 400px;
+        overflow: hidden;
+        }
+
+        .collapsible {
+        flex-shrink: 0;
+        }
+
+        .contenido {
+        width: 0;
+        overflow: hidden;
+        transition: width 0.5s ease;
+        }
+
+        .contenido-abierto {
+        width: 100%;
+        }
+
+</style>
+<body>
+    <div class="ContenedorWidget">
+        <center>
+          <div class="contenedor-botones">
+            <button id="toggle-reactions" type="button" class="btn btn-outline-secondary boton">
+              <i class="fa-regular fa-face-meh-blank"></i>
+            </button>
+          </div>
+        </center>
+        <div class="reactions-container contenido">
+            <div class="reaction felicidad" data-reaction="Felicidad">
+              <span class="reaction-name">Feliz</span>
+              <i class="fa-regular fa-face-laugh-beam"></i>
+            </div>
+            <div class="reaction miedo" data-reaction="Miedo">
+              <span class="reaction-name">Miedo</span>
+              <i class="fa-regular fa-face-flushed"></i>
+            </div>
+            <div class="reaction sorpresa" data-reaction="Sorpresa">
+              <span class="reaction-name">Sorprendido</span>
+              <i class="fa-regular fa-face-surprise"></i>
+            </div>
+            <div class="reaction tristeza" data-reaction="Tristeza">
+              <span class="reaction-name">Triste</span>
+              <i class="fa-regular fa-face-sad-tear"></i>
+            </div>
+            <div class="reaction enojo" data-reaction="Enojo">
+              <span class="reaction-name">Enojado</span>
+              <i class="fa-regular fa-face-angry"></i>
+            </div>
+            <div class="reaction neutro" data-reaction="Neutro">
+              <span class="reaction-name">Neutro</span>
+              <i class="fa-regular fa-face-meh"></i>
+            </div>
+            <div class="reaction conmovido" data-reaction="Conmovido">
+              <span class="reaction-name">Conmovido</span>
+              <i class="fa-regular fa-face-sad-cry"></i>
+            </div>
+            <div class="reaction inspiracion" data-reaction="Inspiracion">
+              <span class="reaction-name">Inspirador</span>
+              <i class="fa-regular fa-face-grin-stars"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const collapsible = document.querySelector('.boton');
+        const contenido = document.querySelector('.contenido');
+        const botonReacciones = document.getElementById('toggle-reactions');
+
+
+        collapsible.addEventListener('click', () => {
+        contenido.classList.toggle('contenido-abierto');
+        });
+
+        const reacciones = document.querySelectorAll(".reaction");
+        reacciones.forEach(r => {
+            r.addEventListener("click", function() {
+            reacciones.forEach(r => {
+                r.classList.remove("selected");
+            });
+            this.classList.add("selected");
+            botonReacciones.innerHTML = this.innerHTML;
+            botonReacciones.style.backgroundColor = getComputedStyle(this).getPropertyValue('background-color');
+            contenido.classList.toggle('contenido-abierto');
+            });
+        });
+
+        // Add event listener to each reaction button
+        reacciones.forEach(button => {
+          button.addEventListener('click', () => {
+            const selectedReaction = button.getAttribute('data-reaction');
+            console.log(selectedReaction); // or store the selected emotion in a variable or send it to a server
+          });
+        });
+    </script>
+</body>
+</html>
