@@ -36,7 +36,7 @@ def addUser():
         if form.contraseña.data != form.confirmar_contraseña.data:
             flash('Las contraseñas no coinciden', 'error')
             return redirect(url_for('addUser'))
-        #hola
+        #holassssssssssss
          # Verificar si el correo electrónico ya está en la base de datos
         existing_user = user.find_one({'email': email})
         if existing_user is not None:
