@@ -1,0 +1,188 @@
+.ContenedorWidget{
+    width: 100%;
+    max-width: 700px;
+    height: 80px;
+    position: fixed;
+    bottom: 10vh;
+    right: 5vh;
+    z-index: 999;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.boton{
+    position: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+    color: black !important;
+}
+.reactions-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.reaction {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    background-color: white;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+}
+.reaction:hover {
+    transform: scale(1.2);
+}
+.reaction-name {
+    display: none;
+    position: absolute;
+    top: -20px;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.reaction:hover .reaction-name {
+    display: block;
+}
+.selected {
+    background-color: lightblue;
+}
+.miedo.selected {
+    background-color: #B39DDB;
+    border: 1px solid #B39DDB;
+}
+.miedo:hover{
+    background-color: #B39DDB;
+    border: 1px solid black; 
+}
+.felicidad.selected {
+    background-color:  #FFEE58;
+    border: 1px solid  #FFEE58;
+}
+.felicidad:hover {
+    background-color: #FFEE58;
+    border: 1px solid black;
+}
+.sorpresa.selected {
+    background-color: #F5DEB3;
+    border: 1px solid #F5DEB3;
+}
+.sorpresa:hover {
+    background-color: #F5DEB3;
+    border: 1px solid black;
+}
+.tristeza.selected {
+    background-color: #BFE6FF;
+    border: 1px solid #BFE6FF;
+}
+.tristeza:hover {
+    background-color: #BFE6FF;
+    border: 1px solid black;
+}
+.enojo.selected {
+    background-color: #ff6171;
+    border: 1px solid #ff6171;
+}
+.enojo:hover {
+    background-color: #ff6171;
+    border: 1px solid black;
+}
+.neutro.selected {
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+}
+.neutro:hover {
+    background-color: #f1f1f1;
+    border: 1px solid black;
+}
+
+.conmovido.selected {
+    background-color: #ffc061;
+    border: 1px solid #ffc061;
+}
+.conmovido:hover {
+    background-color: #ffc061;
+    border: 1px solid black;
+}
+.inspiracion.selected {
+    background-color: #BEE7A3;
+    border: 1px solid #BEE7A3;
+}
+.inspiracion:hover {
+    background-color: #BEE7A3;
+    border: 1px solid black;
+}
+.contenedor-botones{
+    border-radius: 60px;
+    border-color: rgb(108, 108, 108) !important;
+    border: 2px solid;
+    height: 65px; 
+    width: 75px; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+}
+
+.collapsible-container {
+    display: flex;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.collapsible {
+    flex-shrink: 0;
+}
+
+.contenidoWidget{
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.contenido-abierto {
+    width: 100%;
+}
+
+@media (max-width: 770px) {
+    .reaction {
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        margin: 5px;
+        font-size: 10px;
+    }
+    .ContenedorWidget{
+        width: 100%;
+        max-width: 400px;
+        padding-top: 10px;
+    }
+    .contenedor-botones{
+        padding: auto;
+        border: 2px solid;
+        height: 45px; 
+        width: 45px; 
+    }
+    .boton{
+        border-radius: 20px;
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+        padding: 0 !important;
+    }
+    .reaction-name {
+        font-size: 8px;
+    }
+    .reactions-container {
+        padding-top: 15px;
+    }
+}

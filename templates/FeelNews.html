@@ -43,6 +43,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><h5 class="dropdown-item" >Name</h5></li>
             <li><a class="dropdown-item" href="#">Mi información</a></li>
+            <li><a class="dropdown-item" href="#"><b>Cerrar sesión</b></a></li>
           </ul>
         </div>
       </div>
@@ -324,7 +325,7 @@
             <div class="sticky-top">
               <div class="row d-flex flex-row justify-content-center">
                 <!-- Aquí van los widgets -->
-                <iframe src="../public/Widgets/Calendar/index.html" class="calendar"></iframe>
+                <iframe src="{{ url_for('static', filename='Widgets/Calendar/Calendario.html') }}" class="calendar"></iframe>
                 
                 <div class="socialContainer">
                   <h2>Síganos</h2>
