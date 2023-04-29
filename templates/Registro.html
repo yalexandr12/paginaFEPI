@@ -19,37 +19,76 @@
         <h4 class="title">Registrate</h4>
         <div class="container">
             <p class="texto">Campos obligatorios*</p>
-            <form class="g-3 needs-validation" method="POST", action="/login">
+            <form class="g-3 needs-validation" method="POST", action="/registrosesion">
+                {{ form.hidden_tag() }}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input_group">
                             <input type="text" id="nombre" class="form_input" name = "nombre" placeholder=" " required>
-                            <label for="nombre" class="form_label">Nombre(s)*</label>
+                            <label for="nombre" class="form_label">Nombre(s)*</label>{% if form.errors %}
+                            <ul >
+                                {% for error in form.nombre.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        
                         </div>
                         <div class="input_group">
                             <input type="text" id="apellidoPaterno" class="form_input" name = "apellidoP" placeholder=" " required>
-                            <label for="apellidoPaterno" class="form_label">Apellido Paterno*</label>
+                            <label for="apellidoPaterno" class="form_label">Apellido Paterno*</label>{% if form.apellidoP.errors %}
+                            <ul>
+                                {% for error in form.apellidoP.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                         </div>
                         <div class="input_group">
                             <input type="text" id="apellidoMaterno" class="form_input" name = "apellidoM" placeholder=" " required>
-                            <label for="apellidoMaterno" class="form_label">Apellido Materno*</label>
+                            <label for="apellidoMaterno" class="form_label">Apellido Materno*</label>{% if form.apellidoM.errors %}
+                            <ul>
+                                {% for error in form.apellidoM.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input_group">
                             <input type="email" id="correo" class="form_input" name = "correo" placeholder=" " required>
-                            <label for="correo" class="form_label">Correo electrónico*</label>
+                            <label for="correo" class="form_label">Correo electrónico*</label>{% if form.correo.errors %}
+                            <ul>
+                                {% for error in form.correo.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                         </div>
                         <div class="input_group">
                             <input type="password" id="pass" class="form_input" name = "contraseña" placeholder=" " required>
-                            <label for="pass" class="form_label">Contraseña*</label>
+                            <label for="pass" class="form_label">Contraseña*</label>{% if form.contraseña.errors %}
+                                <ul>
+                                    {% for error in form.contraseña.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button class="btn pass-eye" type="button" id="show-password-btn-1" onclick="togglePassword('1','pass')">
                                 <i class="fa-regular fa-eye-slash" id='myIcon-1'></i>
                             </button>
                         </div>
                         <div class="input_group">
-                            <input type="password" id="passConfir" class="form_input", name = "contraseña" placeholder=" " required>
-                            <label for="passConfir" class="form_label">Confirmar Contraseña*</label>
+                            <input type="password" id="passConfir" class="form_input", name = "confirmarcontraseña" placeholder=" " required>
+                            <label for="passConfir" class="form_label">Confirmar Contraseña*</label>{% if form.confirmar_contraseña.errors %}
+                                <ul>
+                                    {% for error in form.confirmar_contraseña.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button class="btn pass-eye" type="button" id="show-password-btn-2" onclick="togglePassword('2','passConfir')">
                                 <i class="fa-regular fa-eye-slash" id='myIcon-2'></i>
                             </button>
@@ -66,7 +105,7 @@
                         </div>
                     </div>
                     <div class="col-12 d-flex justify-content-center pb-3">
-                        <button type="submit" class="btn btn-dark">Crear cuenta</button>
+                        <button type="submit" name="submit_button" class="btn btn-dark">Crear cuenta</button>
                     </div>
                 </div>
           </form>
