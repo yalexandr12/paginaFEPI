@@ -36,7 +36,7 @@ def addUser():
     # Verificar si el correo electrónico ya está en la base de datos
     existing_user = user.find_one({'email': email})
     if existing_user is not None:
-        return 'El correo electrónico ya está registrado en la base de datos'
+        return redirect(url_for('registro', error='El correo electrónico ya está registrado en la base de datos'))
 
 
     if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
@@ -69,7 +69,8 @@ def inicio():
 
 @app.route('/Registro')
 def registro():
-    return render_template('Registro.html')
+    error = request.args.get('error')
+    return render_template('Registro.html', error=error)
 
 @app.route('/Noticia')
 def entrar():
