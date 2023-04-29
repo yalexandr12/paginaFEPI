@@ -76,31 +76,48 @@
           </div>
         </div>
     </div>
+    
+    <div id="errorModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorText"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeModal" class="btn btn-secondary">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 <script>
-    function togglePassword(inputId,nameId) {
-        var passwordInput = document.getElementById(nameId);
-        var showPasswordBtn = document.getElementById("show-password-btn-" + inputId);
-        var showPasswordIcon = document.getElementById("myIcon-" + inputId);
+    function showModal(message) {
+        $("#errorText").text(message);
+        $('#errorModal').modal('show');
 
-        function showPassword() {
-            passwordInput.type = "text";
-            showPasswordIcon.classList.remove("fa-eye-slash");
-            showPasswordIcon.classList.add("fa-eye");
-        }
-
-        function hidePassword() {
-            passwordInput.type = "password";
-            showPasswordIcon.classList.remove("fa-eye");
-            showPasswordIcon.classList.add("fa-eye-slash");
-        }
-
-        showPasswordBtn.addEventListener("mousedown", showPassword);
-        showPasswordBtn.addEventListener("mouseup", hidePassword);
     }
-    setTimeout(function(){
-                document.querySelector('.transition').classList.add('show');
-            }, 100);
-  </script>
+
+    function closeModal() {
+        $('#errorModal').modal('hide');
+    }
+
+    $(document).ready(function () {
+        var errorMessage = "{{ error }}";
+        if (errorMessage != 'None') {
+            showModal(errorMessage);
+        }
+        $("#closeModal").click(function () {
+            closeModal();
+        });
+    });
+
+</script>
+<script src="{{ url_for('static', filename='js/visualizarContrasena.js') }}"></script>
+<script src="{{ url_for('static', filename='js/validaciones.js') }}"></script>
   
 </html>
