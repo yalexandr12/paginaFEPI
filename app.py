@@ -1,37 +1,29 @@
 from flask import Flask
 from flask import render_template, request, Response, jsonify, redirect, url_for
-from flask import request
-import os
-from forms import RegistroForm
 import database as dbase 
 from usuarios import Usuarios 
 
 db = dbase.dbConection()
 
 app = Flask(__name__, static_url_path='/static')
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
 
 @app.route('/')
 def home():
-    return render_template('InicioSesion.html')  #
+    return render_template('Main.html')  #
 
 
 #Metodo POST
-@app.route('/registrosesion', methods=['GET','POST'])
+@app.route('/login', methods=['POST'])
 def addUser():
     #Crear la colecion 
     db = dbase.dbConection()
     user = db['usuarios']
-
-    form = RegistroForm()
-    if request.method == 'POST' and form.validate_on_submit() and 'submit' in request.form:
-        form.nombre.data = request.form['nombre']
-        form.apellidoP.data = request.form['apellidoP']
-        form.apellidoM.data = request.form['apellidoM']
-        form.correo.data = request.form['correo']
-        form.contraseña.data = request.form['contraseña']
-        #confirmar contraseña->>>>>>>
-        form.confirmar_contraseña.data = request.form['confirmar_contraseña']
+    name = request.form['nombre']
+    last_nameP = request.form['apellidoP']
+    last_nameM = request.form['apellidoM']
+    email = request.form['correo']
+    password = request.form['contraseña']
 
     # Verificar si el correo electrónico ya está en la base de datos
     existing_user = user.find_one({'email': email})
@@ -74,7 +66,7 @@ def registro():
 
 @app.route('/Noticia')
 def entrar():
-    return render_template('FeelNews.html')
+    return render_template('Noticia.html')
 
 
 #Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
@@ -89,18 +81,16 @@ def validate_user():
     if user_data is None:
         return "El usuario o contraseña son incorrectos."
     else:
-        return render_template('Noticia.html')
-    
-#Funcion para inicio y validaciones de las inputs
+        return render_template('FeelNews.html')
 
-
-
-@app.route('/registro-exitoso')
-def registro_exitoso():
-    return '¡Registro exitoso!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
 
+
+
+@app.route('/Calendario')
+def registro():
+    return render_template('Calendario.html')
 
 
