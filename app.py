@@ -2,6 +2,8 @@ from flask import Flask
 from flask import render_template, request, Response, jsonify, redirect, url_for
 import database as dbase 
 from usuarios import Usuarios 
+from flask_mail import Mail, Message
+import secrets
 
 db = dbase.dbConection()
 
@@ -12,8 +14,37 @@ app = Flask(__name__, static_url_path='/static')
 def home():
     return render_template('Main.html')  #
 
+#Configurar la conexion para enviar el correo
+app.config['MAIL_SERVER'] = 'smtp.office365.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'sistemarecomendador@outlook.com'
+app.config['MAIL_PASSWORD'] = '+programaTT951'
+app.config['MAIL_STARTTLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USE_TLS'] = True
+mail = Mail(app)
 
-#Metodo POST
+def crear_token(email):
+    db = dbase.dbConection()
+    user = db['usuarios']
+    token = secrets.token_urlsafe(64)
+    user.update_one({'email': email}, {'$set': {'email_token': token}})
+    return token
+
+@app.route('/confirmar_correo/<token>')
+def confirmar_correo(token):
+    db = dbase.dbConection()
+    user = db['usuarios']
+    user.update_one({'email_token': token}, {"$set": {'email_confirmed':True}})
+    user.update_one({'email_token': token}, {'$unset': {'email_token': ""}})
+    return "Tu correo electrónico ha sido confirmado con éxito"
+
+def enviar_confirmacion(email, token):
+    msg = Message('Confirma tu dirección de correo electrónico',sender="sistemarecomendador@outlook.com", recipients=[email])
+    msg.body = f'Haz clic en el siguiente enlace para confirmar tu dirección de correo electrónico: {url_for("confirmar_correo", token=token, _external=True)}'
+    mail.send(msg)
+
+#Resgistro de un nuevo usuario
 @app.route('/login', methods=['POST'])
 def addUser():
     #Crear la colecion 
@@ -30,17 +61,20 @@ def addUser():
     if existing_user is not None:
         return redirect(url_for('registro', error='El correo electrónico ya está registrado en la base de datos'))
 
-
     if user is not None and name is not None and last_nameP is not None and last_nameM is not None and password is not None:
         newUser = Usuarios(name, last_nameP, last_nameM, email, password)
+
+        # Generar un token para la dirección de correo electrónico del usuario
+        email_token = crear_token(email)
+
+        # Enviar el correo electrónico de confirmación al usuario
+        enviar_confirmacion(email, email_token)
+
+        # Agregar el token y el estado de la dirección de correo electrónico a la base de datos
+        newUser.email_token = email_token
+        newUser.email_confirmed = False
         user.insert_one(newUser.__dict__)
-        response = jsonify({
-            'name' : name,
-            'last_nameP' : last_nameP,
-            'last_nameM' : last_nameM,
-            'email' : email,
-            'password' : password
-        })
+
         return redirect(url_for('home'))
     else:
         return notFound()
@@ -80,8 +114,11 @@ def validate_user():
     user_data = user.find_one({"email": email, "password": password})
     if user_data is None:
         return "El usuario o contraseña son incorrectos."
+    elif user_data['email_confirmed'] is False:
+        #revisar si en la base de datos el correo ya ha sido verificado
+        return "El correo no ha sido verificado."
     else:
-        return render_template('FeelNews.html')
+        return render_template('Noticia.html')
 
 
 if __name__ == '__main__':

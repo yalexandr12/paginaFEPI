@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt /app/
 
-RUN pip install certifi && pip install wtforms && pip install flask_wtf && pip install email_validator && pip install -r requirements.txt
+RUN pip install certifi && pip install wtforms && pip install flask_wtf && pip install email_validator && pip install flask_mail && pip install -r requirements.txt
 
 COPY . /app/
 
