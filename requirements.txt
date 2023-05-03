@@ -1,2 +1,9 @@
 flask
 pymongo
+certifi
+wtforms
+flask_wtf
+email_validator
+flask_mail
+jinja2
+MarkupSafe
