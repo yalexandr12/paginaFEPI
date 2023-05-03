@@ -122,7 +122,7 @@ def ver_noticia(noticia_id):
 def noticias():
     db = dbase.dbConection()
     collection = db['noticias']
-    secciones = ['cdmx', 'deportes', 'mundo'] # Secciones a las que se quiere obtener noticias
+    secciones = ['cdmx', 'deportes', 'mundo','nacional'] # Secciones a las que se quiere obtener noticias
     noticias = []
     for seccion in secciones:
         noticias_seccion = list(collection.aggregate([
