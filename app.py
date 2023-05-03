@@ -1,9 +1,17 @@
 from flask import Flask
 from flask import render_template, request, Response, jsonify, redirect, url_for
+from flask import render_template_string
 import database as dbase 
 from usuarios import Usuarios 
 from flask_mail import Mail, Message
 import secrets
+import pprint
+import random
+from bson.objectid import ObjectId
+from jinja2 import *
+from flask import Markup
+import html5lib
+
 
 db = dbase.dbConection()
 
@@ -98,10 +106,35 @@ def registro():
     error = request.args.get('error')
     return render_template('Registro.html', error=error)
 
-@app.route('/Noticia')
-def entrar():
-    return render_template('Noticia.html')
+@app.route('/noticia/<noticia_id>')
+def ver_noticia(noticia_id):
+    db = dbase.dbConection()
+    notas = db['noticias']
+    # Utiliza el ID de la noticia para obtener la información de la noticia desde MongoDB
+    noticia = notas.find_one({'_id': ObjectId(noticia_id)})
+    # Escapa el contenido para evitar que se muestren las etiquetas HTML
+    
+    # Renderiza la plantilla de la noticia con la información obtenida
+    return render_template('Noticia.html', noticia=noticia, Contenido=Markup(noticia['Contenido']))
 
+#Cards Noticias
+@app.route('/FeelNews', methods=['GET'])
+def noticias():
+    db = dbase.dbConection()
+    collection = db['noticias']
+    secciones = ['cdmx', 'deportes', 'mundo','nacional'] # Secciones a las que se quiere obtener noticias
+    noticias = []
+    for seccion in secciones:
+        noticias_seccion = list(collection.aggregate([
+            {"$match": {"Seccion": seccion}}, # Filtrar por sección
+            {"$sample": {"size": 4}} # Obtener 3 documentos al azar de cada sección
+        ]))
+        noticias += noticias_seccion
+    if not noticias:
+        print("No se encontraron noticias en la base de datos")
+        return render_template('FeelNews.html', noticias=[])
+    noticias_encabezado = random.sample(noticias, 6)
+    return render_template('FeelNews.html', noticias=noticias ,noticias_encabezado=noticias_encabezado)
 
 #Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
 @app.route('/Iniciar_sesion', methods=['GET'])
@@ -118,7 +151,11 @@ def validate_user():
         #revisar si en la base de datos el correo ya ha sido verificado
         return "El correo no ha sido verificado."
     else:
-        return render_template('Noticia.html')
+        return redirect(url_for('noticias'))
+    
+
+
+
 
 
 if __name__ == '__main__':

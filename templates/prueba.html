@@ -84,30 +84,30 @@
     <div class="row">
       <div class="col-xl-6 p-2">
         <div class="image-container">
-          <img class="img-encabezado" src="{{noticias_encabezado[1].Imagen }}">
-          <a href=""class="image-texto-1">{{ noticias_encabezado[1].Titulo }} </a>
+          <img class="img-encabezado" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/sYgHVmTvphoMB2ynh1K26eaIdbc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/CDMU5SED2ZCIRLOH4TN55ITYGI.jpg">
+          <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
         </div>
       </div>
       <div class="col-xl-6 p-2">
         <div class="row">
           <div class="col-md-6">
             <div class="image-container my-1">
-              <img class="img-encabezado-chicas" src="{{ noticias_encabezado[2].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[2].Titulo }} </a>
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/N3YU3I3KBdtQtflhy8mAdpHY9uU=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/TRGCO7LDURDY5KA5EGCUIE2WMY.jpg">
+              <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
             </div>
             <div class="image-container my-1">
-              <img class="img-encabezado-chicas" src="{{ noticias_encabezado[3].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[3].Titulo }}</a>
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/c0YecPfg-RGpBOdCZ8Un6EuF5Kc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/WRJ2QQZDUFEDJFJJQCXKH735WM.jpeg">
+              <a href=""class="image-texto-1">Ken Salazar asegura que EU inició la lucha contra el fentanilo y tráfico de armas </a>
             </div>
           </div>
           <div class="col-md-6">
             <div class="image-container my-1">
-              <img class="img-encabezado-chicas" src="{{ noticias_encabezado[4].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[4].Titulo }}</a>
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/YnkLwDukFtuFgYEEZCzVLEI9-pc=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/KHAIRN2TO5HSRIDXF6YSVQWXXY.jpeg">
+              <a href=""class="image-texto-1">Concamin inaugura Centro de Inteligencia</a>
             </div>
             <div class="image-container my-1">
-              <img class="img-encabezado-chicas" src="{{ noticias_encabezado[5].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[5].Titulo }}</a>
+              <img class="img-encabezado-chicas" src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/mbE1oldSwjxW4fQQczlu2Pg25JY=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/GGLGJOEOJVD6FALRWVRWYYWIBM.jpeg">
+              <a href=""class="image-texto-1">Guerrero y Oaxaca suman esfuerzos en materia de seguridad y bienestar para sus pueblos</a>
             </div>
           </div>
         </div>
@@ -119,69 +119,86 @@
   <div class="container-fluid ">
     <div class="d-flex justify-content-center">
       <div class="row flex-row ">
+        </div>
+    </div>
+  </div>
         <div class="col-lg-9 order-md-1 order-1">
           <!-- Aquí van las noticias -->
           <div class="row">
-            <h3><em>Nacional</em></h3>
-            <hr class="LineaGruesa">
+            <h3><em>Último momento</em></h3>
+            <hr>
           </div>
-        </section>
-        <div class="d-flex justify-content-center">
-          <section id="sec1">
+          <div class="d-flex justify-content-center">
             <div class="row">
-              {% for noticia in noticias %}
-                {% if noticia.Seccion == 'nacional' %}
-                <div class="col">
-                  <div class="card" style="width: 18rem; margin-bottom: 20px;">
-                    <img src="{{ noticia.Imagen }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ noticia.Titulo }}</h5>
-                      <p class="card-text">{{ noticia.Resumen| safe}}</p>
-                      <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
-                    </div>
-                  </div>
-                </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </section>
-        </div>
-
- <!-- Sección 1-->
-          <div class="row">
-          <h3><em>cdmx</em></h3>
-          <hr class="LineaGruesa">
-        </div>
-      </section>
-      <div class="d-flex justify-content-center">
-        <section id="sec1">
-          <div class="row">
-            {% for noticia in noticias %}
-              {% if noticia.Seccion == 'cdmx' %}
               <div class="col">
                 <div class="card" style="width: 18rem; margin-bottom: 20px;">
-                  <img src="{{ noticia.Imagen }}" class="card-img-top" alt="...">
+                  <img src="https://www.elfinanciero.com.mx/resizer/Uv1e6NIGmXptz-MrQoJ2XVUcsJU=/800x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/364WHYFRUNEAVLC3C3JXYWYTX4.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">{{ noticia.Titulo }}</h5>
-                    <p class="card-text">{{ noticia.Resumen| safe}}</p>
-                    <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
+                    <h5 class="card-title">Sequía en CDMX: ¿Cómo es el programa de Cosecha de lluvia y cuáles son sus requisitos? </h5>
+                    <p class="card-text">Con el programa de cosecha de lluvia, las personas de bajos recursos pueden acceder a un servicio de agua de calidad a bajo costo.</p>
+                    <a href="https://www.elfinanciero.com.mx/cdmx/2023/03/13/falta-de-agua-cdmx-programa-cosecha-de-lluvia-2023-que-es-y-requisitos/" class="btn btn-dark">Leer más</a>
                   </div>
                 </div>
               </div>
-              {% endif %}
-            {% endfor %}
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/uecvtwT2d-rEF5AqY6cMng3daqg=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/RMQY3DII4VB6DF2IP4643QEGRA.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Si todo se puede atender en un correo ¿Cuál es el futuro de las juntas de trabajo?</h5>
+                    <p class="card-text">Ir de mala gana a juntas de trabajo no críticas desperdicia alrededor de 100 millones de dólares al año en grandes organizaciones</p>
+                    <a href="https://www.elfinanciero.com.mx/bloomberg/2023/03/13/juntas-de-trabajo-en-camino-de-desaparecer/" class="btn btn-dark ">Leer más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/wq2vgmOqEIo-fT31k3QPwiAeXro=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/FAVBZDFOINF25IWPSZTEI72KJA.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Sube a 10 el número de víctimas por ataque armado en centro nocturno de Guanajuato</h5>
+                    <p class="card-text">Este es el segundo ataque armado con múltiples víctimas en municipios de Guanajuato.</p>
+                    <a href="#" class="btn btn-dark">Leer más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      </div>
+          <section id="sec1">
+            <div class="row">
 
-<!-- Sección 2-->   
-         <div class="row">  
+<!-- Sección de espectáculos -->
+              <h3><em>cdmx</em></h3>
+              <hr class="LineaGruesa">
+            </div>
+          </section>
+          <div class="d-flex justify-content-center">
+            <section id="sec2">
+              <div class="row">
+                {% for noticia in noticias %}
+                  {% if noticia.Seccion == 'cdmx' %}
+                  <div class="col">
+                    <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                      <img src="{{ noticia.Imagen }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ noticia.Titulo }}</h5>
+                        <p class="card-text">{{ noticia.Resumen| safe}}</p>
+                        <a href="{{ noticia.URL }}" class="btn btn-dark">Leer más</a>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </section>
+          </div>
+
+
+          <div class="row">  
           <h3><em>Mundo</em></h3>
           <hr class="LineaGruesa">
         </div>
       </section>
       <div class="d-flex justify-content-center">
-        <section id="sec2">
+        <section id="sec3">
           <div class="row">
             {% for noticia in noticias %}
               {% if noticia.Seccion == 'mundo' %}
@@ -191,7 +208,7 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ noticia.Titulo }}</h5>
                     <p class="card-text">{{ noticia.Resumen| safe}}</p>
-                    <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
+                    <a href="{{ noticia.URL }}" class="btn btn-dark">Leer más</a>
                   </div>
                 </div>
               </div>
@@ -202,7 +219,8 @@
       </div>
 
 
-<!-- Sección 3--> 
+
+       
           <div class="row">  
             <h3><em>Deportes</em></h3>
             <hr class="LineaGruesa">
@@ -219,7 +237,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ noticia.Titulo }}</h5>
                       <p class="card-text">{{ noticia.Resumen| safe}}</p>
-                      <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
+                      <a href="{{ noticia.URL }}" class="btn btn-dark">Leer más</a>
                     </div>
                   </div>
                 </div>
@@ -229,8 +247,6 @@
           </section>
         </div>
 
-        </div>
-        
         <div class="col-lg-3 flex-column order-1">
           <div class="container">
             <div class="sticky-top">
@@ -254,6 +270,7 @@
       </div>
     </div>
   </div>
+
 <hr color="black">
 
 <footer class="text-center text-lg-start" id="sec4">
