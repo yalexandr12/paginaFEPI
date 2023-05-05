@@ -93,10 +93,10 @@ def addUser():
 @app.errorhandler(404)
 def notFound(error=None):
     message ={
-        'message' : 'No encontrado ' + request.url,
+        'message' : 'Lo siento, la página '  + request.url + ' no se puede encontrar.',
         'status' : '404 Not Found'
     }
-    return jsonify(message)
+    return render_template('404.html', message=message['message']), 404
 
 
 @app.route('/Inicio_sesion')
