@@ -48,8 +48,10 @@ def confirmar_correo(token):
     return "Tu correo electrónico ha sido confirmado con éxito"
 
 def enviar_confirmacion(email, token):
-    msg = Message('Confirma tu dirección de correo electrónico',sender="sistemarecomendador@outlook.com", recipients=[email])
-    msg.body = f'Haz clic en el siguiente enlace para confirmar tu dirección de correo electrónico: {url_for("confirmar_correo", token=token, _external=True)}'
+    confirm_url = url_for("confirmar_correo", token=token, _external=True)
+    html = render_template("CorreoVerificacionPlantilla.html", confirm_url=confirm_url)
+    msg = Message('Confirma tu dirección de correo electrónico', sender="sistemarecomendador@outlook.com", recipients=[email])
+    msg.html = html
     mail.send(msg)
 
 #Resgistro de un nuevo usuario
