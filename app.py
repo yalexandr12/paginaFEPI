@@ -51,8 +51,10 @@ def confirmar_correo(token):
     return "Tu correo electrónico ha sido confirmado con éxito"
 
 def enviar_confirmacion(email, token):
-    msg = Message('Confirma tu dirección de correo electrónico',sender="sistemarecomendador@outlook.com", recipients=[email])
-    msg.body = f'Haz clic en el siguiente enlace para confirmar tu dirección de correo electrónico: {url_for("confirmar_correo", token=token, _external=True)}'
+    confirm_url = url_for("confirmar_correo", token=token, _external=True)
+    html = render_template("CorreoVerificacionPlantilla.html", confirm_url=confirm_url)
+    msg = Message('Confirma tu dirección de correo electrónico', sender="sistemarecomendador@outlook.com", recipients=[email])
+    msg.html = html
     mail.send(msg)
 
 #Resgistro de un nuevo usuario
@@ -94,10 +96,10 @@ def addUser():
 @app.errorhandler(404)
 def notFound(error=None):
     message ={
-        'message' : 'No encontrado ' + request.url,
+        'message' : 'Lo siento, la página '  + request.url + ' no se puede encontrar.',
         'status' : '404 Not Found'
     }
-    return jsonify(message)
+    return render_template('404.html', message=message['message']), 404
 
 
 @app.route('/Inicio_sesion')
@@ -145,7 +147,7 @@ def guardar_reaccion(noticia_id):
 def noticias():
     db = dbase.dbConection()
     collection = db['noticias']
-    secciones = ['cdmx', 'deportes', 'mundo'] # Secciones a las que se quiere obtener noticias
+    secciones = ['cdmx', 'deportes', 'mundo','nacional'] # Secciones a las que se quiere obtener noticias
     noticias = []
     for seccion in secciones:
         noticias_seccion = list(collection.aggregate([

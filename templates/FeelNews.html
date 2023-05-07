@@ -122,43 +122,30 @@
         <div class="col-lg-9 order-md-1 order-1">
           <!-- Aquí van las noticias -->
           <div class="row">
-            <h3><em>Último momento</em></h3>
-            <hr>
+            <h3><em>Nacional</em></h3>
+            <hr class="LineaGruesa">
           </div>
-          <div class="d-flex justify-content-center">
+        </section>
+        <div class="d-flex justify-content-center">
+          <section id="sec1">
             <div class="row">
-              <div class="col">
-                <div class="card" style="width: 18rem; margin-bottom: 20px;">
-                  <img src="https://www.elfinanciero.com.mx/resizer/Uv1e6NIGmXptz-MrQoJ2XVUcsJU=/800x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/364WHYFRUNEAVLC3C3JXYWYTX4.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Sequía en CDMX: ¿Cómo es el programa de Cosecha de lluvia y cuáles son sus requisitos? </h5>
-                    <p class="card-text">Con el programa de cosecha de lluvia, las personas de bajos recursos pueden acceder a un servicio de agua de calidad a bajo costo.</p>
-                    <a href="https://www.elfinanciero.com.mx/cdmx/2023/03/13/falta-de-agua-cdmx-programa-cosecha-de-lluvia-2023-que-es-y-requisitos/" class="btn btn-dark">Leer más</a>
+              {% for noticia in noticias %}
+                {% if noticia.Seccion == 'nacional' %}
+                <div class="col">
+                  <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                    <img src="{{ noticia.Imagen }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ noticia.Titulo }}</h5>
+                      <p class="card-text">{{ noticia.Resumen| safe}}</p>
+                      <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem; margin-bottom: 20px;">
-                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/uecvtwT2d-rEF5AqY6cMng3daqg=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/RMQY3DII4VB6DF2IP4643QEGRA.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Si todo se puede atender en un correo ¿Cuál es el futuro de las juntas de trabajo?</h5>
-                    <p class="card-text">Ir de mala gana a juntas de trabajo no críticas desperdicia alrededor de 100 millones de dólares al año en grandes organizaciones</p>
-                    <a href="https://www.elfinanciero.com.mx/bloomberg/2023/03/13/juntas-de-trabajo-en-camino-de-desaparecer/" class="btn btn-dark ">Leer más</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem; margin-bottom: 20px;">
-                  <img src="https://elfinanciero-elfinanciero-prod.cdn.arcpublishing.com/resizer/wq2vgmOqEIo-fT31k3QPwiAeXro=/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/FAVBZDFOINF25IWPSZTEI72KJA.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Sube a 10 el número de víctimas por ataque armado en centro nocturno de Guanajuato</h5>
-                    <p class="card-text">Este es el segundo ataque armado con múltiples víctimas en municipios de Guanajuato.</p>
-                    <a href="#" class="btn btn-dark">Leer más</a>
-                  </div>
-                </div>
-              </div>
+                {% endif %}
+              {% endfor %}
             </div>
-          </div>
+          </section>
+        </div>
 
  <!-- Sección 1-->
           <div class="row">
@@ -204,7 +191,7 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ noticia.Titulo }}</h5>
                     <p class="card-text">{{ noticia.Resumen| safe}}</p>
-                    <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class=btn btn-dark>Leer más</a>
+                    <a href="{{ url_for('ver_noticia', noticia_id=noticia._id) }}" class="btn btn-dark">Leer más</a>
                   </div>
                 </div>
               </div>
