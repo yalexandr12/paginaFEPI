@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 from flask import render_template, request, Response, jsonify, redirect, url_for
 from flask import render_template_string
 import database as dbase 
@@ -32,7 +32,10 @@ app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USE_TLS'] = True
 mail = Mail(app)
 
+app.secret_key = 'clave_secreta'
+
 def crear_token(email):
+    #Se crea un token y se guarda en la collecion del usuario
     db = dbase.dbConection()
     user = db['usuarios']
     token = secrets.token_urlsafe(64)
@@ -110,12 +113,32 @@ def registro():
 def ver_noticia(noticia_id):
     db = dbase.dbConection()
     notas = db['noticias']
+
     # Utiliza el ID de la noticia para obtener la información de la noticia desde MongoDB
     noticia = notas.find_one({'_id': ObjectId(noticia_id)})
     # Escapa el contenido para evitar que se muestren las etiquetas HTML
     
     # Renderiza la plantilla de la noticia con la información obtenida
     return render_template('Noticia.html', noticia=noticia, Contenido=Markup(noticia['Contenido']))
+
+
+@app.route('/noticia/<noticia_id>/guardar_reaccion', methods=['POST'])
+def guardar_reaccion(noticia_id):
+    db = dbase.dbConection()
+    clasificados = db['noticias_clasificadas']
+    # Obtener el user_id desde la variable de sesión
+    user_id = session.get('user_id')
+    # Obtener el valor de la reacción desde la solicitud POST
+    reaction = request.json['reaction']
+    # Guardar la noticia clasificada en la colección de noticias clasificadas
+    clasificados.insert_one({
+        'noticia_id': ObjectId(noticia_id),
+        'reaccion': reaction,
+        'usuario_id': user_id
+    })
+    # Devolver una respuesta con el código de estado HTTP 200 (OK)
+    return '', 200
+
 
 #Cards Noticias
 @app.route('/FeelNews', methods=['GET'])
@@ -143,6 +166,7 @@ def validate_user():
     email = request.args.get('email')
     password = request.args.get('password')
     user = db['usuarios']
+
     #Verificar que el usuario y la contraseñan correspondan al usuario
     user_data = user.find_one({"email": email, "password": password})
     if user_data is None:
@@ -151,6 +175,7 @@ def validate_user():
         #revisar si en la base de datos el correo ya ha sido verificado
         return "El correo no ha sido verificado."
     else:
+        session['user_id'] = str(user_data['_id'])
         return redirect(url_for('noticias'))
     
 
