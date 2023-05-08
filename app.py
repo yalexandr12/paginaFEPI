@@ -104,7 +104,8 @@ def notFound(error=None):
 
 @app.route('/Inicio_sesion')
 def inicio():
-    return render_template('InicioSesion.html')
+    error = request.args.get('error')
+    return render_template('InicioSesion.html', error=error)
 
 @app.route('/Registro')
 def registro():
@@ -172,16 +173,20 @@ def validate_user():
     #Verificar que el usuario y la contraseñan correspondan al usuario
     user_data = user.find_one({"email": email, "password": password})
     if user_data is None:
-        return "El usuario o contraseña son incorrectos."
+        return redirect(url_for('inicio', error='El usuario o contraseña son incorrectos.'))
+        #return "El usuario o contraseña son incorrectos."
     elif user_data['email_confirmed'] is False:
         #revisar si en la base de datos el correo ya ha sido verificado
-        return "El correo no ha sido verificado."
+        return redirect(url_for('inicio', error='El correo no ha sido verificado.'))
+        #return "El correo no ha sido verificado."
     else:
         session['user_id'] = str(user_data['_id'])
         return redirect(url_for('noticias'))
     
 
-
+@app.route('/Modificar_datos')
+def ModificarDatos():
+    return render_template('ModificarDatosUsuario.html')
 
 
 

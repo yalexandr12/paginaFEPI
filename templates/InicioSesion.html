@@ -80,6 +80,44 @@
               </div>
             </div>
           </div>
+          <div id="errorModal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="errorText"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeModal" class="btn btn-secondary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          function showModal(message) {
+              $("#errorText").text(message);
+              $('#errorModal').modal('show');
+      
+          }
+      
+          function closeModal() {
+              $('#errorModal').modal('hide');
+          }
+      
+          $(document).ready(function () {
+              var errorMessage = "{{ error }}";
+              if (errorMessage != 'None') {
+                  showModal(errorMessage);
+              }
+              $("#closeModal").click(function () {
+                  closeModal();
+              });
+          });    
+      </script>
         <script>
             setTimeout(function(){
                 document.querySelector('.transition').classList.add('show');

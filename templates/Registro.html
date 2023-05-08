@@ -34,18 +34,22 @@
                             <input type="text" id="apellidoMaterno" class="form_input" name = "apellidoM" placeholder=" " required>
                             <label for="apellidoMaterno" class="form_label">Apellido Materno*</label>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="input_group">
                             <input type="email" id="correo" class="form_input" name = "correo" placeholder=" " required>
                             <label for="correo" class="form_label">Correo electrónico*</label>
                         </div>
-                        <div class="input_group">
+                    </div>
+                    <div class="col-md-6">
+                        
+                        <div class="input_group pb-4">
                             <input type="password" id="pass" class="form_input" name = "contraseña" placeholder=" " required>
                             <label for="pass" class="form_label">Contraseña*</label>
                             <button class="btn pass-eye" type="button" id="show-password-btn-1" onclick="togglePassword('1','pass')">
                                 <i class="fa-regular fa-eye-slash" id='myIcon-1'></i>
                             </button>
+                            <span id="passwordHelpInline" class="form-text">
+                                Tu contraseña debe tener entre 6 y 10 caracteres, al menos 1 número, una letra mayúscula y un carácter especial (!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~).
+                            </span>
                         </div>
                         <div class="input_group">
                             <input type="password" id="passConfir" class="form_input", name = "contraseña" placeholder=" " required>
@@ -54,16 +58,19 @@
                                 <i class="fa-regular fa-eye-slash" id='myIcon-2'></i>
                             </button>
                         </div>
+                        <div class="input_group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Acepto los términos y condiciones
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row" >
                     <div class="col-12 d-flex justify-content-center pb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Acepto los términos y condiciones
-                            </label>
-                        </div>
+                        
                     </div>
                     <div class="col-12 d-flex justify-content-center pb-3">
                         <button type="submit" class="btn btn-dark">Crear cuenta</button>

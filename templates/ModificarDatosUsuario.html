@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FeelNews</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/FeelNews.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Noticia.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Reaction.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ModificarDatos.css') }}">
     <script src="https://kit.fontawesome.com/1403a81a44.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -35,7 +35,7 @@
       <hr>
       <div class="row">
         <div class="col-6 align-self-start">
-          <a href="/FeelNews"><img src="{{ url_for('static', filename='images/Logo.jpg') }}" class="logo"></a>
+            <a href="/FeelNews"><img src="{{ url_for('static', filename='images/Logo.jpg') }}" class="logo"></a>
         </div>
         <div class="col-6 d-flex justify-content-end">
           <div class="dropdown">
@@ -69,81 +69,63 @@
     </div>
   </nav>
   <hr class="LineaGruesa">
-  <div class="container">
-    <h1 class="titulo">{{noticia.Titulo}}</h1>
-    <div id="reaccion" data-reaction="like" data-noticia-id="{{ noticia['_id'] }}" style="display:none;"></div>
-
-    <div class="row mt-5">
-        <div class="col-6">
-            <h5 class="informacion">Escrito por: {{noticia.Autor |safe}}</h5>
-        </div>
-        <div class="col-6">
-          <h5 class="informacion">Publicado en: {{ noticia['Sitio de publicacion'] }}</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <h5 class="informacion">Fecha: {{noticia['Fecha de publicacion']}}</h5>
-        </div>
-        <div class="col-6">
-            <h5 class="informacion">Link de la publicación:{{noticia.URL}} </h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="image-container">
-              <img class="img-noticia mx-auto d-block" src="{{ noticia.Imagen }}">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <p class="contenido">{{noticia.Contenido|safe}} </p>
-    </div>
-  </div>
-
-  <div class="ContenedorWidget">
-    <center>
-      <div class="contenedor-botones">
-        <button id="toggle-reactions" type="button" class="btn btn-outline-secondary boton">
-          <i class="fa-regular fa-face-meh-blank"></i>
-        </button>
+  <div class="container"  style="padding: 10px 30px 10px;">
+    <h1 class="mb-3">Mis datos</h2>
+    <h3 class="mb-3">Información sobre la cuenta</h4>
+    <form>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="nombre" class="input_label">Nombre:</label>
+        <input class="form-control" type="text" placeholder=" " value="Marco Antonio"required>
       </div>
-    </center>
-    <div class="reactions-container contenidoWidget">
-        <div class="reaction felicidad" data-reaction="Felicidad">
-          <span class="reaction-name">Feliz</span>
-          <i class="fa-regular fa-face-laugh-beam"></i>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="apellido-paterno" class="input_label">Apellido Paterno:</label>
+        <input class="form-control" type="text" placeholder=" " value="Torres" required>
+      </div>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="apellido-materno" class="input_label">Apellido Materno:</label>
+        <input class="form-control" type="text" placeholder=" " value="López"required>
+      </div>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="correo" class="input_label">Correo electrónico:</label>
+        <input class="form-control" type="email" id="correo" placeholder=" " value="marko274.matl@gmail.com" required>
+      </div>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="ContraActual" class="input_label">Contraseña actual:</label>
+        <input class="form-control" type="password" id="ContraActual" placeholder=" " required>
+        <div class="valid-tooltip">
+          Looks good!
         </div>
-        <div class="reaction miedo" data-reaction="Miedo">
-          <span class="reaction-name">Miedo</span>
-          <i class="fa-regular fa-face-flushed"></i>
+      </div>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="pass" class="input_label">Nueva contraseña:</label>
+        <div class="input-group">
+          <input class="form-control" type="password" id="pass" placeholder=" " required>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary pass-eye" type="button" id="show-password-btn-1" onclick="togglePassword('1','pass')">
+              <i class="fa-regular fa-eye-slash" id='myIcon-1'></i>
+            </button>
+          </div>
         </div>
-        <div class="reaction sorpresa" data-reaction="Sorpresa">
-          <span class="reaction-name">Sorprendido</span>
-          <i class="fa-regular fa-face-surprise"></i>
+        <span id="passwordHelpInline" class="form-text">
+          Recuerda que tu contraseña debe tener entre 6 y 10 caracteres, al menos 1 número, una letra mayúscula y un carácter especial.
+        </span>
+      </div>
+      <div class="form-group col-12 col-lg-6 mb-3">
+        <label for="Confirmarcontra" class="input_label">Confirmar contraseña:</label>
+        <div class="input-group">
+          <input class="form-control" id="passConfir" type="password" placeholder=" " required>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary pass-eye" type="button" id="show-password-btn-2" onclick="togglePassword('2','passConfir')">
+              <i class="fa-regular fa-eye-slash" id='myIcon-2'></i>
+            </button>
+          </div>
         </div>
-        <div class="reaction tristeza" data-reaction="Tristeza">
-          <span class="reaction-name">Triste</span>
-          <i class="fa-regular fa-face-sad-tear"></i>
-        </div>
-        <div class="reaction enojo" data-reaction="Enojo">
-          <span class="reaction-name">Enojado</span>
-          <i class="fa-regular fa-face-angry"></i>
-        </div>
-        <div class="reaction neutro" data-reaction="Neutro">
-          <span class="reaction-name">Neutro</span>
-          <i class="fa-regular fa-face-meh"></i>
-        </div>
-        <div class="reaction conmovido" data-reaction="Conmovido">
-          <span class="reaction-name">Conmovido</span>
-          <i class="fa-regular fa-face-sad-cry"></i>
-        </div>
-        <div class="reaction inspiracion" data-reaction="Inspiracion">
-          <span class="reaction-name">Inspirador</span>
-          <i class="fa-regular fa-face-grin-stars"></i>
-        </div>
-    </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Guardar</button>
+
+    </form>
   </div>
+  
   <hr color="black">
 
     <footer class="text-center text-lg-start" id="sec4">
@@ -160,6 +142,7 @@
         </div>
     </div>
     </footer>
-    <script src="{{ url_for('static', filename='js/reaction.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validaciones.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/visualizarContrasena.js') }}"></script>
 </body>
 </html>

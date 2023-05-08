@@ -1,0 +1,12 @@
+.input_label{
+    color: #666e7e;
+    line-height: 1.7;
+    font-weight: 700;
+}
+
+.pass-eye{
+    position: absolute;
+    right: 0;
+    z-index: 1;
+
+}
