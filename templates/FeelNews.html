@@ -85,7 +85,7 @@
       <div class="col-xl-6 p-2">
         <div class="image-container">
           <img class="img-encabezado" src="{{noticias_encabezado[1].Imagen }}">
-          <a href=""class="image-texto-1">{{ noticias_encabezado[1].Titulo }} </a>
+          <a href="{{ url_for('ver_noticia', noticia_id=noticias_encabezado[1]._id) }}"class="image-texto-1">{{ noticias_encabezado[1].Titulo }} </a>
         </div>
       </div>
       <div class="col-xl-6 p-2">
@@ -93,21 +93,21 @@
           <div class="col-md-6">
             <div class="image-container my-1">
               <img class="img-encabezado-chicas" src="{{ noticias_encabezado[2].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[2].Titulo }} </a>
+              <a href="{{ url_for('ver_noticia', noticia_id=noticias_encabezado[2]._id) }}"class="image-texto-1">{{ noticias_encabezado[2].Titulo }} </a>
             </div>
             <div class="image-container my-1">
               <img class="img-encabezado-chicas" src="{{ noticias_encabezado[3].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[3].Titulo }}</a>
+              <a href="{{ url_for('ver_noticia', noticia_id=noticias_encabezado[3]._id) }}"class="image-texto-1">{{ noticias_encabezado[3].Titulo }}</a>
             </div>
           </div>
           <div class="col-md-6">
             <div class="image-container my-1">
               <img class="img-encabezado-chicas" src="{{ noticias_encabezado[4].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[4].Titulo }}</a>
+              <a href="{{ url_for('ver_noticia', noticia_id=noticias_encabezado[4]._id) }}"class="image-texto-1">{{ noticias_encabezado[4].Titulo }}</a>
             </div>
             <div class="image-container my-1">
               <img class="img-encabezado-chicas" src="{{ noticias_encabezado[5].Imagen }}">
-              <a href=""class="image-texto-1">{{ noticias_encabezado[5].Titulo }}</a>
+              <a href="{{ url_for('ver_noticia', noticia_id=noticias_encabezado[5]._id) }}"class="image-texto-1">{{ noticias_encabezado[5].Titulo }}</a>
             </div>
           </div>
         </div>
