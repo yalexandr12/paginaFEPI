@@ -33,7 +33,7 @@
     <hr>
     <div class="row">
       <div class="col-6 align-self-start">
-        <img src="{{ url_for('static', filename='images/Logo.jpg') }}" class="logo">
+        <a href="/FeelNews"><img src="{{ url_for('static', filename='images/Logo.jpg') }}" class="logo"></a>
       </div>
       <div class="col-6 d-flex justify-content-end">
         <div class="dropdown">
@@ -42,7 +42,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><h5 class="dropdown-item" >Name</h5></li>
-            <li><a class="dropdown-item" href="#">Mi información</a></li>
+            <li><a class="dropdown-item" href="/Modificar_datos">Mi información</a></li>
             <li><a class="dropdown-item" href="#"><b>Cerrar sesión</b></a></li>
           </ul>
         </div>
@@ -154,7 +154,7 @@
         </div>
       </section>
       <div class="d-flex justify-content-center">
-        <section id="sec1">
+        <section id="sec2">
           <div class="row">
             {% for noticia in noticias %}
               {% if noticia.Seccion == 'cdmx' %}
@@ -181,7 +181,7 @@
         </div>
       </section>
       <div class="d-flex justify-content-center">
-        <section id="sec2">
+        <section id="sec3">
           <div class="row">
             {% for noticia in noticias %}
               {% if noticia.Seccion == 'mundo' %}
