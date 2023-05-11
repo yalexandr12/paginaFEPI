@@ -124,12 +124,19 @@ def noticias():
             {"$sample": {"size": 4}} # Obtener 3 documentos al azar de cada sección
         ]))
         noticias += noticias_seccion
+        
+    # Verificar si el campo de imagen está vacío y asignar una imagen por defecto si es necesario
+    for noticia in noticias:
+        if noticia['Imagen'] == "" or noticia['Imagen'] is None:
+            noticia['Imagen'] = 'static\images\imagenBase.jpg'
+            
     if not noticias:
         print("No se encontraron noticias en la base de datos")
         return render_template('FeelNews.html', noticias=[])
     noticias_encabezado = random.sample(noticias, 6)
-    return render_template('FeelNews.html', noticias=noticias ,noticias_encabezado=noticias_encabezado)
 
+
+    return render_template('FeelNews.html', noticias=noticias, noticias_encabezado=noticias_encabezado)
 @app.route('/noticia/<noticia_id>')
 def ver_noticia(noticia_id):
     db = dbase.dbConection()
