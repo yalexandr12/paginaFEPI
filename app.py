@@ -171,7 +171,6 @@ def guardar_reaccion(noticia_id):
 
 
 
-
 #Funcion para iniciar sesion y verificar que el usuario se encuentre en la bd
 @app.route('/Iniciar_sesion', methods=['GET'])
 def validate_user():
